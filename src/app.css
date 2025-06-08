@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ultra&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@supports (animation-range: entry-crossing) {
+	.fit-to-width {
+		font-size: 13rem; /* 2 */
+		overflow: hidden; /* 3 */
+
+		scroll-snap-type: both mandatory; /* 4 */
+
+		/* 5 */
+		& > * {
+			inline-size: max-content; /* 6 */
+			line-height: 1; /* 7 */
+			transform-origin: 0 0; /* 8 */
+
+			animation: apply-text-ratio linear; /*  9 */
+			animation-timeline: view(inline); /* 10 */
+			animation-range: entry-crossing; /* 11 */
+
+			display: block; /* 12 */
+			scroll-snap-align: start; /*  4 */
+			contain: layout; /* 13 */
+		}
+	}
+}
+
+/* 9 */
+@keyframes apply-text-ratio {
+	from {
+		transform: scale(0); /* 14 */
+		margin-block-end: -1lh; /* 15 */
+	}
+}
