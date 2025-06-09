@@ -126,7 +126,7 @@
 		style:background={darkBackground}
 	>
 		<Sized
-			font="EBGaramond"
+			font="EB Garamond"
 			fontWeight="bolder"
 			classes="text-white text-center"
 			text={song.title}
