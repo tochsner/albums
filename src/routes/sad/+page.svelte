@@ -39,7 +39,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="mx-8 mt-16 rounded-lg bg-white px-4 py-3 text-center font-[EBGaramond] leading-[115%] font-extrabold text-balance opacity-0"
+			class="font-EBGaramond mx-8 mt-16 rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -95,7 +95,7 @@
 			/>
 		</svg>
 
-		<div class="font-[EBGaramond] text-[1.7rem] font-extrabold text-white">
+		<div class="font-EBGaramond text-[1.7rem] font-extrabold text-white">
 			{artist}
 		</div>
 
@@ -196,7 +196,7 @@
 		</button>
 
 		<span
-			class="mx-4 mt-12 self-start font-[EBGaramond] text-[1.7rem] font-extrabold text-white italic opacity-80"
+			class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
 		>
 			Themes
 		</span>
@@ -204,7 +204,7 @@
 		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="rounded-lg border-3 border-white/20 px-4 py-1 font-[EBGaramond] text-[1.2rem] font-extrabold text-white
+					class="font-EBGaramond rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] font-extrabold text-white
 
 "
 					style:background={darkBackground}
@@ -215,13 +215,13 @@
 		</div>
 
 		<span
-			class="itlic mx-4 my-4 text-center font-[EBGaramond] text-[1.2rem] font-extrabold text-white"
+			class="itlic font-EBGaramond mx-4 my-4 text-center text-[1.2rem] font-extrabold text-white"
 		>
 			{song.description}
 		</span>
 
 		<span
-			class="mx-4 mt-12 self-start font-[EBGaramond] text-[1.7rem] font-extrabold text-white italic opacity-80"
+			class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
 		>
 			Lyrics
 		</span>
@@ -229,7 +229,7 @@
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.2rem] font-extrabold text-white italic"
+					class="font-EBGaramond bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] font-extrabold text-white italic"
 					style:background={mainForeground}
 				>
 					{lyrics}

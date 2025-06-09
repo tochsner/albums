@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@theme {
+	--font-EBGaramond: 'EB Garamond';
+}
 
 @supports (animation-range: entry-crossing) {
 	.fit-to-width {
