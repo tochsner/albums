@@ -44,7 +44,7 @@
 	style:background={mainBackground}
 >
 	<div
-		class="mx-8 mt-24 rounded-lg bg-white px-4 py-3 text-center font-[EBGaramond] leading-[115%] font-extrabold text-balance opacity-0"
+		class="mx-8 mt-16 rounded-lg bg-white px-4 py-3 text-center font-[EBGaramond] leading-[115%] font-extrabold text-balance opacity-0"
 		style:color={mainForeground}
 		style:font-size={titleFontSize}
 		use:shrinkWrap
@@ -169,37 +169,27 @@
 					clip-path="url(#clip-shape)"
 				/>
 
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					stroke="currentColor"
-					class="size-6 origin-center scale-60 text-white transition-opacity ease-out"
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke="white"
+					stroke-width="2px"
+					transform="translate(39 43) scale(7)"
 					opacity={isPlaying ? 0.0 : 1.0}
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
-					/>
-				</svg>
+					class="transition-opacity ease-in"
+					d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
+				/>
 
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					stroke="currentColor"
-					class="size-6 origin-center scale-60 text-white transition-opacity ease-in"
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke="white"
+					stroke-width="2px"
+					transform="translate(39 43) scale(7)"
 					opacity={isPlaying ? 1.0 : 0.0}
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"
-					/>
-				</svg>
+					class="transition-opacity ease-out"
+					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"
+				/>
 			</svg>
 		</button>
 
@@ -209,10 +199,10 @@
 			Themes
 		</span>
 
-		<div class="mt-4 flex w-full gap-4 px-4">
+		<div class="mt-4 flex w-full justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="rounded-full border-3 border-white/20 px-4 py-2 font-[EBGaramond] text-[1.2rem] font-extrabold text-white
+					class="rounded-full border-3 border-white/20 px-4 py-2 font-[EBGaramond] text-[1.3rem] font-extrabold text-white
 
 "
 					style:background={mainBackground}
@@ -231,7 +221,7 @@
 		<div class="mt-4 flex w-full -rotate-2 flex-col items-center gap-2 px-4">
 			{#each song.lyricsHighlight as lyrics (lyrics)}
 				<span
-					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.2rem] font-extrabold text-white italic"
+					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.3rem] font-extrabold text-white italic"
 					style:background={mainForeground}
 				>
 					{lyrics}
