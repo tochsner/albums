@@ -1,7 +1,3 @@
-import { analyzeSongLyrics } from '$lib/analyseSongLyrics';
-import { getColorFromUrl } from '$lib/colorUtils';
-import { retrieveDeezerData } from '$lib/retrieveDeezerData';
-import { retrieveGeniusData } from '$lib/retrieveGeniusData';
 import type { PageServerLoad } from './$types';
 
 import { supabase } from '$lib/supabaseClient';
@@ -11,7 +7,7 @@ export const load: PageServerLoad = async () => {
 	today.setHours(0, 0, 0, 0);
 	const todayISOString = today.toISOString();
 
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from('Album')
 		.select('*')
 		.gte('created_at', todayISOString)
@@ -25,8 +21,6 @@ export const load: PageServerLoad = async () => {
 		.select('*')
 		.eq('albumTitle', album.title)
 		.eq('artist', album.artist);
-
-	console.log(songs.data);
 
 	return {
 		...album,
