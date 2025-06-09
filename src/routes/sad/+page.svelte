@@ -226,7 +226,7 @@
 			Lyrics
 		</span>
 
-		<div class="mt-4 flex w-full -rotate-2 flex-col items-center gap-2 px-4">
+		<div class="mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics (lyrics)}
 				<span
 					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.3rem] font-extrabold text-white italic"
