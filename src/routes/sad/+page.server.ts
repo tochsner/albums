@@ -12,6 +12,8 @@ export const load: PageServerLoad = async () => {
 		songs: [
 			{
 				title: 'Flume',
+				description:
+					'Layered falsetto vocals over gentle acoustic guitar, creating an ethereal, intimate atmosphere',
 				themes: ['Identity', 'Love', 'Mystery'],
 				lyricsHighlight: [
 					'Only love is all maroon',
@@ -22,6 +24,7 @@ export const load: PageServerLoad = async () => {
 			},
 			{
 				title: 'Lump Sum',
+				description: 'A haunting falsetto folk song about isolation and transformation.',
 				themes: ['Sacrifice', 'Emotional Struggle'],
 				lyricsHighlight: [
 					'Sold my red horse for a venture home',

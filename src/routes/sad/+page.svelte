@@ -21,7 +21,7 @@
 		element.style.opacity = '100';
 	}
 
-	let titleFontSize = title.length < 30 ? '3.2rem' : '2.4rem';
+	let titleFontSize = title.length < 30 ? '3.0rem' : '2.2rem';
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${hex(palette.a3, 80)} 0%,${hex(palette.a1, 80)} 100%)`;
@@ -40,7 +40,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col items-center justify-center gap-16"
+	class="flex w-full flex-col items-center justify-center gap-12"
 	style:background={mainBackground}
 >
 	<div
@@ -174,7 +174,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(39 43) scale(7)"
+					transform="translate(51 57) scale(6)"
 					opacity={isPlaying ? 0.0 : 1.0}
 					class="transition-opacity ease-in"
 					d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
@@ -185,7 +185,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(39 43) scale(7)"
+					transform="translate(51 57) scale(6)"
 					opacity={isPlaying ? 1.0 : 0.0}
 					class="transition-opacity ease-out"
 					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"
@@ -202,7 +202,7 @@
 		<div class="mt-4 flex w-full justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="rounded-full border-3 border-white/20 px-4 py-2 font-[EBGaramond] text-[1.3rem] font-extrabold text-white
+					class="rounded-lg border-3 border-white/20 px-4 py-1 font-[EBGaramond] text-[1.3rem] font-extrabold text-white
 
 "
 					style:background={mainBackground}
@@ -211,6 +211,12 @@
 				</span>
 			{/each}
 		</div>
+
+		<span
+			class="itlic mx-4 my-4 text-center font-[EBGaramond] text-[1.3rem] font-extrabold text-white"
+		>
+			{song.description}
+		</span>
 
 		<span
 			class="mx-4 mt-12 self-start font-[EBGaramond] text-[1.7rem] font-extrabold text-white italic opacity-80"
