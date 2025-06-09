@@ -3,7 +3,6 @@ import {
 	QuantizerCelebi,
 	Score,
 	argbFromRgb,
-	CorePalette,
 	hexFromArgb,
 	TonalPalette
 } from '@material/material-color-utilities';
