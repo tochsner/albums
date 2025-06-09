@@ -18,27 +18,17 @@ export const load: PageServerLoad = async () => {
 					'Gluey feathers on a flume',
 					"Sky is womb and she's the moon"
 				],
-				playbackUrl: ''
+				playbackUrl: 'https://www.kozco.com/tech/WAV-MP3.wav'
 			},
 			{
-				title: 'Flume but now with a way longer song title',
-				themes: ['Identity', 'Love', 'Mystery'],
+				title: 'Lump Sum',
+				themes: ['Sacrifice', 'Emotional Struggle'],
 				lyricsHighlight: [
-					'Only love is all maroon',
-					'Gluey feathers on a flume',
-					"Sky is womb and she's the moon"
+					'Sold my red horse for a venture home',
+					'To vanish on the bow',
+					'Settling slow'
 				],
-				playbackUrl: ''
-			},
-			{
-				title: 'Flume with a long title',
-				themes: ['Identity', 'Love', 'Mystery'],
-				lyricsHighlight: [
-					'Only love is all maroon',
-					'Gluey feathers on a flume',
-					"Sky is womb and she's the moon"
-				],
-				playbackUrl: ''
+				playbackUrl: 'https://sample-files.com/downloads/audio/mp3/tone-test.mp3'
 			}
 		]
 	};

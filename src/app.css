@@ -34,3 +34,22 @@
 		margin-block-end: -1lh; /* 15 */
 	}
 }
+
+@theme {
+	--animate-scalePulse: scalePulse 2.5s infinite ease-in-out;
+
+	@keyframes scalePulse {
+		0% {
+			transform: scale(1.1);
+			filter: brightness(1) saturate(1.4);
+		}
+		50% {
+			transform: scale(1.2);
+			filter: brightness(1.2) saturate(1.1);
+		}
+		100% {
+			transform: scale(1.1);
+			filter: brightness(1) saturate(1.4);
+		}
+	}
+}

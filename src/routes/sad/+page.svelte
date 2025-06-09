@@ -18,8 +18,7 @@
 		const { width } = range.getBoundingClientRect();
 		element.style.width = width + 'px';
 		element.style.boxSizing = 'content-box';
-
-		element.style.background = 'white';
+		element.style.opacity = '100';
 	}
 
 	let titleFontSize = title.length < 30 ? '3.2rem' : '2.4rem';
@@ -27,6 +26,17 @@
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${hex(palette.a3, 80)} 0%,${hex(palette.a1, 80)} 100%)`;
 	let mainForeground = hex(palette.a2, 60);
+
+	let currentPlaybackUrl = $state<string>();
+
+	$effect(() => {
+		if (!currentPlaybackUrl) return;
+
+		const audio = new Audio(currentPlaybackUrl);
+		audio.play();
+
+		return () => audio.pause();
+	});
 </script>
 
 <div
@@ -34,7 +44,7 @@
 	style:background={mainBackground}
 >
 	<div
-		class="mx-8 mt-24 rounded-lg bg-white px-4 py-3 text-center font-[EBGaramond] leading-[115%] font-extrabold text-balance"
+		class="mx-8 mt-24 rounded-lg bg-white px-4 py-3 text-center font-[EBGaramond] leading-[115%] font-extrabold text-balance opacity-0"
 		style:color={mainForeground}
 		style:font-size={titleFontSize}
 		use:shrinkWrap
@@ -107,8 +117,10 @@
 </div>
 
 {#each songs as song (song.title)}
+	{@const isPlaying = currentPlaybackUrl == song.playbackUrl}
+
 	<div
-		class="flex w-full flex-col items-center justify-center gap-16 pb-16"
+		class="flex w-full flex-col items-center justify-center pt-16"
 		style:background={mainBackground}
 	>
 		<Sized
@@ -117,5 +129,102 @@
 			classes="text-white text-center"
 			text={song.title}
 		/>
+
+		<button
+			onclick={() => {
+				if (isPlaying) {
+					currentPlaybackUrl = undefined;
+				} else {
+					currentPlaybackUrl = song.playbackUrl;
+				}
+			}}
+			aria-label="Start playback."
+			class:scale-110={isPlaying}
+			class:animate-scalePulse={isPlaying}
+			class="origin-center transition-transform duration-100 ease-in"
+		>
+			<svg viewBox="0 0 248 253" fill="none" xmlns="http://www.w3.org/2000/svg" class="mt-16 w-24">
+				<defs>
+					<filter id="blur-bg">
+						<feGaussianBlur stdDeviation="40" />
+					</filter>
+
+					<clipPath id="clip-shape">
+						<path
+							fill="white"
+							d="M24.2385 20.5113C53.762 -1.02366 131.94 -1.54198 186.658 1.12421C220.155 2.75642 246.156 29.6366 246.962 63.1641C248.411 123.489 246.069 211.802 221.239 229.011C189.991 250.668 116.055 253.373 64.2212 252.287C31.6779 251.606 5.50694 226.684 2.9254 194.237C-1.92131 133.318 -4.0974 41.18 24.2385 20.5113Z"
+						>
+						</path>
+					</clipPath>
+				</defs>
+
+				<image
+					href={imageUrl}
+					x="0"
+					y="0"
+					width="248"
+					height="253"
+					filter="url(#blur-bg)"
+					preserveAspectRatio="xMidYMid slice"
+					clip-path="url(#clip-shape)"
+				/>
+
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke="white"
+					stroke-width="2"
+					transform="translate(43, 43) scale(7)"
+					d="M5.25 5.653c0-.856.17-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
+				/>
+			</svg>
+		</button>
+
+		<span
+			class="mx-4 mt-12 self-start font-[EBGaramond] text-[1.7rem] font-extrabold text-white italic opacity-80"
+		>
+			Themes
+		</span>
+
+		<div class="mt-4 flex w-full gap-4 px-4">
+			{#each song.themes as theme (theme)}
+				<span
+					class="rounded-full border-3 border-white/20 px-4 py-2 font-[EBGaramond] text-[1.2rem] font-extrabold text-white
+
+"
+					style:background={mainBackground}
+				>
+					{theme}
+				</span>
+			{/each}
+		</div>
+
+		<span
+			class="mx-4 mt-12 self-start font-[EBGaramond] text-[1.7rem] font-extrabold text-white italic opacity-80"
+		>
+			Lyrics
+		</span>
+
+		<div class="mt-4 flex w-full -rotate-2 flex-col items-center gap-2 px-4">
+			{#each song.lyricsHighlight as lyrics (lyrics)}
+				<span
+					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.2rem] font-extrabold text-white italic"
+					style:background={mainForeground}
+				>
+					{lyrics}
+				</span>
+			{/each}
+		</div>
+
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="2.5"
+			stroke="currentColor"
+			class="mt-12 mb-4 size-6 text-white opacity-70"
+		>
+			<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+		</svg>
 	</div>
 {/each}
