@@ -50,3 +50,17 @@ export function getPartitions(arr: number[], n: number) {
 
 	return result;
 }
+
+export function shrinkWrap(element: HTMLElement) {
+	const { firstChild, lastChild } = element;
+	if (!element || !firstChild || !lastChild) return;
+
+	const range = document.createRange();
+	range.setStartBefore(firstChild);
+	range.setEndAfter(lastChild);
+
+	const { width } = range.getBoundingClientRect();
+	element.style.width = width + 'px';
+	element.style.boxSizing = 'content-box';
+	element.style.opacity = '100';
+}
