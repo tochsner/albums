@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ultra&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 @supports (animation-range: entry-crossing) {
 	.fit-to-width {
