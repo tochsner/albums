@@ -1,10 +1,10 @@
 import { GENIUS_CLIENT_ID, GENIUS_CLIENT_SECRET } from '$env/static/private';
 import * as cheerio from 'cheerio';
 
-export async function retrieveGeniusData(song: string, artist: string): Promise<string> {
+export async function retrieveGeniusData(song: string, artist: string) {
 	const songUrl = await getSongUrl(song, artist);
 	const lyrics = await getLyrics(songUrl);
-	return lyrics;
+	return { lyrics };
 }
 
 async function getSongUrl(song: string, artist: string) {

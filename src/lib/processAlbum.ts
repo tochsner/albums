@@ -1,0 +1,60 @@
+import { analyzeSongLyrics } from '$lib/analyseSongLyrics';
+import { getColorFromUrl } from '$lib/colorUtils';
+import { retrieveDeezerData } from '$lib/retrieveDeezerData';
+import { retrieveGeniusData } from '$lib/retrieveGeniusData';
+import { supabase } from '$lib/supabaseClient';
+
+import log from 'loglevel';
+
+export async function processAlbum(name: string, artist: string) {
+	log.info('Processing album:', name, artist);
+
+	const deezerData = await retrieveDeezerData(name, artist);
+	log.info('Retrieved Deezer data.');
+
+	const color = await getColorFromUrl(deezerData.imageUrl);
+	log.info('Retrieved main color.');
+
+	await supabase.from('Album').insert({
+		title: deezerData.title,
+		artist: deezerData.artist,
+		imageUrl: deezerData.imageUrl,
+		color
+	});
+	log.info('Stored album into DB.');
+
+	try {
+		for (const track of deezerData.tracks) {
+			log.info('Processing track:', track.title);
+
+			const { lyrics } = await retrieveGeniusData(track.title, deezerData.artist);
+			log.info('Retrieved lyrics.');
+
+			const { description, themes, highlightedLyrics } = await analyzeSongLyrics(
+				track.title,
+				deezerData.artist,
+				lyrics
+			);
+			log.info('Analyzed song lyrics.');
+
+			await supabase.from('Song').insert({
+				title: track.title,
+				artist: deezerData.artist,
+				albumTitle: deezerData.title,
+				description,
+				themes,
+				lyrics,
+				highlightedLyrics,
+				playbackUrl: track.playbackUrl
+			});
+			log.info('Stored song into DB.');
+		}
+	} catch (error) {
+		log.error('Error processing album:', error);
+
+		const a = await supabase.from('Album').delete().eq('title', deezerData.title);
+		log.info('Deleted album from DB.', a, deezerData.title);
+
+		throw error;
+	}
+}

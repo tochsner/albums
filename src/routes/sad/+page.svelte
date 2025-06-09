@@ -201,10 +201,10 @@
 			Themes
 		</span>
 
-		<div class="mt-4 flex w-full justify-center gap-4 px-4">
+		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="rounded-lg border-3 border-white/20 px-4 py-1 font-[EBGaramond] text-[1.3rem] font-extrabold text-white
+					class="rounded-lg border-3 border-white/20 px-4 py-1 font-[EBGaramond] text-[1.2rem] font-extrabold text-white
 
 "
 					style:background={darkBackground}
@@ -215,7 +215,7 @@
 		</div>
 
 		<span
-			class="itlic mx-4 my-4 text-center font-[EBGaramond] text-[1.3rem] font-extrabold text-white"
+			class="itlic mx-4 my-4 text-center font-[EBGaramond] text-[1.2rem] font-extrabold text-white"
 		>
 			{song.description}
 		</span>
@@ -226,10 +226,10 @@
 			Lyrics
 		</span>
 
-		<div class="mt-4 flex -rotate-2 flex-col items-center gap-2">
-			{#each song.highlightedLyrics as lyrics (lyrics)}
+		<div class="mt-4 flex -rotate-2 flex-col items-center gap-2 px-6">
+			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.3rem] font-extrabold text-white italic"
+					class="bg-red-50 py-1 pr-2 pl-6 -indent-4 font-[EBGaramond] text-[1.2rem] font-extrabold text-white italic"
 					style:background={mainForeground}
 				>
 					{lyrics}
