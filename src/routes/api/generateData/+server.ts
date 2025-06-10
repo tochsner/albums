@@ -11,7 +11,7 @@ export async function GET() {
 
 		try {
 			// await processAlbum(randomAlbum.album, randomAlbum.artist);
-			await processAlbum('Depression Cherry', 'Beach House');
+			await processAlbum('I Love You Like A Brother', 'Alex Lahey');
 		} catch (error) {
 			log.error(`Error processing album: ${error}`);
 			continue;
