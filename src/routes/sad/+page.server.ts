@@ -7,12 +7,16 @@ export const load: PageServerLoad = async () => {
 	today.setHours(0, 0, 0, 0);
 	const todayISOString = today.toISOString();
 
+	console.log(todayISOString);
+
 	const { data } = await supabase
 		.from('Album')
 		.select('*')
 		.gte('created_at', todayISOString)
 		.order('created_at', { ascending: true })
 		.limit(1);
+
+	console.log('Fetched');
 
 	const album = data[0];
 
