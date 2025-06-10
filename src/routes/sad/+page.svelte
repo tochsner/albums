@@ -12,7 +12,7 @@
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${hex(palette.a3, 80)} 0%,${hex(palette.a1, 80)} 100%)`;
-	let darkBackground = `linear-gradient(45deg, ${hex(palette.a3, 40)} 0%,${hex(palette.a1, 40)} 100%)`;
+	let darkBackground = `linear-gradient(45deg, ${hex(palette.a3, 35)} 0%,${hex(palette.a1, 35)} 100%)`;
 	let mainForeground = hex(palette.a2, 60);
 
 	let currentPlaybackUrl = $state<string>();
