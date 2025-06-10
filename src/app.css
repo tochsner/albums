@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Anton&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Anton&family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fredoka:wght@300..700&display=swap');
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
@@ -8,6 +8,7 @@
 	--font-Anton: 'Anton';
 	--font-Aboreto: 'Aboreto';
 	--font-Fredoka: 'Fredoka';
+	--font-Bebas: 'Bebas neue';
 }
 
 @supports (animation-range: entry-crossing) {
