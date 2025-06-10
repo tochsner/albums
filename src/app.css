@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Anton&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
@@ -6,6 +6,7 @@
 @theme {
 	--font-EBGaramond: 'EB Garamond';
 	--font-Anton: 'Anton';
+	--font-Aboreto: 'Aboreto';
 }
 
 @supports (animation-range: entry-crossing) {

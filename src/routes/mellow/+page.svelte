@@ -1,21 +1,19 @@
 <script lang="ts">
-	import { chex, hex } from '$lib/colorUtilsClient';
+	import { chex } from '$lib/colorUtilsClient';
 	import { CorePalette } from '@material/material-color-utilities';
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
-	import { shrinkWrap } from '$lib/fitUtils';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, audios } = data;
 
-	let titleFontSize = title.length < 30 ? '4.0rem' : '3rem';
+	let titleFontSize = title.length < 30 ? '3.0rem' : '2.0rem';
 
 	let palette = CorePalette.contentOf(color);
-	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 90, 10)} 0%,${chex(palette.a1, 90, 30)} 100%)`;
-	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 35, 20)} 0%,${chex(palette.a1, 35, 40)} 100%)`;
-	let mainForeground = hex(palette.a1, 50);
-	let lyricsBackground = chex(palette.a1, 45, 90);
+	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 60, 20)} 0%,${chex(palette.a1, 50, 30)} 100%)`;
+	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 60, 20)} 0%,${chex(palette.a1, 50, 30)} 100%)`;
+	let lyricsBackground = chex(palette.a1, 45, 20);
 
 	let currentPlaybackIdx = $state<number>();
 </script>
@@ -34,10 +32,8 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Anton mx-8 mt-16 rounded-full bg-white px-8 py-6 text-center leading-[115%] text-balance opacity-0"
-			style:color={mainForeground}
+			class="font-Aboreto mt-19 text-center leading-[115%] text-balance text-white"
 			style:font-size={titleFontSize}
-			use:shrinkWrap
 		>
 			{title}
 		</div>
@@ -46,22 +42,34 @@
 			<defs>
 				<filter id="blur-bg">
 					<feGaussianBlur stdDeviation="40" />
+					<feComponentTransfer>
+						<feFuncA type="identity" />
+						<feFuncR type="linear" slope="1.5" />
+						<feFuncG type="linear" slope="1.5" />
+						<feFuncB type="linear" slope="1.5" />
+					</feComponentTransfer>
 				</filter>
 
-				<clipPath id="clip-shape">
-					<circle cx="124" cy="126.5" r="124" fill="white" />
-				</clipPath>
+				<radialGradient id="radialFade" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" style="stop-color:white;stop-opacity:1" />
+					<stop offset="70%" style="stop-color:white;stop-opacity:0.8" />
+					<stop offset="100%" style="stop-color:white;stop-opacity:0" />
+				</radialGradient>
+
+				<mask id="fadeMask">
+					<rect width="100%" height="100%" fill="url(#radialFade)" />
+				</mask>
 			</defs>
 
 			<image
 				href={imageUrl}
 				x="0"
 				y="0"
-				width="248"
-				height="253"
+				width="100%"
+				height="100%"
 				filter="url(#blur-bg)"
 				preserveAspectRatio="xMidYMid slice"
-				clip-path="url(#clip-shape)"
+				mask="url(#fadeMask)"
 			/>
 
 			<image
@@ -71,11 +79,10 @@
 				width="153"
 				height="153"
 				preserveAspectRatio="xMidYMid slice"
-				clip-path="url(#clip-shape)"
 			/>
 		</svg>
 
-		<div class="font-Anton text-[1.7rem]" style:color={mainForeground}>
+		<div class="font-Aboreto text-[1.7rem] text-white">
 			{artist}
 		</div>
 
@@ -109,7 +116,7 @@
 		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
 		style:background={songBackground}
 	>
-		<Sized font="Anton" fontWeight="normal" classes="text-center text-white" text={song.title} />
+		<Sized font="Aboreto" fontWeight="normal" classes="text-center text-white" text={song.title} />
 
 		<button
 			onclick={() => {
@@ -128,26 +135,34 @@
 				<defs>
 					<filter id="blur-bg">
 						<feGaussianBlur stdDeviation="40" />
+						<feComponentTransfer>
+							<feFuncA type="identity" />
+							<feFuncR type="linear" slope="1.5" />
+							<feFuncG type="linear" slope="1.5" />
+							<feFuncB type="linear" slope="1.5" />
+						</feComponentTransfer>
 					</filter>
 
-					<clipPath id="clip-shape">
-						<path
-							fill="white"
-							d="M24.2385 20.5113C53.762 -1.02366 131.94 -1.54198 186.658 1.12421C220.155 2.75642 246.156 29.6366 246.962 63.1641C248.411 123.489 246.069 211.802 221.239 229.011C189.991 250.668 116.055 253.373 64.2212 252.287C31.6779 251.606 5.50694 226.684 2.9254 194.237C-1.92131 133.318 -4.0974 41.18 24.2385 20.5113Z"
-						>
-						</path>
-					</clipPath>
+					<radialGradient id="radialFade" cx="50%" cy="50%" r="50%">
+						<stop offset="0%" style="stop-color:white;stop-opacity:1" />
+						<stop offset="70%" style="stop-color:white;stop-opacity:0.8" />
+						<stop offset="100%" style="stop-color:white;stop-opacity:0" />
+					</radialGradient>
+
+					<mask id="fadeMask">
+						<rect width="100%" height="100%" fill="url(#radialFade)" />
+					</mask>
 				</defs>
 
 				<image
 					href={imageUrl}
 					x="0"
 					y="0"
-					width="248"
-					height="253"
+					width="100%"
+					height="100%"
 					filter="url(#blur-bg)"
 					preserveAspectRatio="xMidYMid slice"
-					clip-path="url(#clip-shape)"
+					mask="url(#fadeMask)"
 				/>
 
 				<path
@@ -174,14 +189,14 @@
 			</svg>
 		</button>
 
-		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+		<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
 			Themes
 		</span>
 
 		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="font-Anton rounded-full border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
+					class="font-Aboreto rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
 
 "
 					style:background={songBackground}
@@ -191,18 +206,18 @@
 			{/each}
 		</div>
 
-		<span class="itlic font-Anton mx-4 my-4 text-center text-[1.2rem] text-white">
+		<span class="itlic font-Aboreto mx-4 my-4 text-center text-[1.2rem] text-white">
 			{song.description}
 		</span>
 
-		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+		<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
 			Lyrics
 		</span>
 
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="font-Anton bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
+					class="font-Aboreto bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
 					style:background={lyricsBackground}
 				>
 					{lyrics}

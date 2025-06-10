@@ -32,11 +32,11 @@ export async function analyzeSongLyrics(name: string, artist: string, lyrics: st
 	const analysis = response.output_parsed;
 
 	if (!analysis) {
-		throw new Error('OpenAI returned undefined');
+		throw new Error('OpenAI returned undefined: ' + name);
 	}
 
 	if (analysis.lyricsError) {
-		throw new Error('Lyrics do not seem to be actual lyrics of a song');
+		throw new Error('Lyrics do not seem to be actual lyrics of a song: ' + name + ' ' + lyrics);
 	}
 
 	return analysis;
