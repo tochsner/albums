@@ -4,9 +4,10 @@
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
 	import { shrinkWrap } from '$lib/fitUtils';
+	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs, audios } = data;
 
 	let titleFontSize = title.length < 30 ? '3.0rem' : '2.2rem';
 
@@ -15,23 +16,16 @@
 	let darkBackground = `linear-gradient(45deg, ${hex(palette.a3, 35)} 0%,${hex(palette.a1, 35)} 100%)`;
 	let mainForeground = hex(palette.a2, 60);
 
-	let currentPlaybackUrl = $state<string>();
-
-	$effect(() => {
-		if (!currentPlaybackUrl) return;
-
-		const audio = new Audio(currentPlaybackUrl);
-		audio.play();
-
-		return () => audio.pause();
-	});
+	let currentPlaybackIdx = $state<number>();
 </script>
 
 {@render albumOverview()}
 
-{#each songs as song (song.title)}
-	{@render songOverview(song)}
+{#each songs as song, idx (song.title)}
+	{@render songOverview(idx, song)}
 {/each}
+
+<AudioPlayback {audios} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
 	<div
@@ -112,14 +106,17 @@
 	</div>
 {/snippet}
 
-{#snippet songOverview(song: {
-	title: string;
-	playbackUrl: string;
-	description: string;
-	themes: string[];
-	highlightedLyrics: string[];
-})}
-	{@const isPlaying = currentPlaybackUrl == song.playbackUrl}
+{#snippet songOverview(
+	idx: number,
+	song: {
+		title: string;
+		playbackUrl: string;
+		description: string;
+		themes: string[];
+		highlightedLyrics: string[];
+	}
+)}
+	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
 		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
@@ -135,9 +132,9 @@
 		<button
 			onclick={() => {
 				if (isPlaying) {
-					currentPlaybackUrl = undefined;
+					currentPlaybackIdx = undefined;
 				} else {
-					currentPlaybackUrl = song.playbackUrl;
+					currentPlaybackIdx = idx;
 				}
 			}}
 			aria-label="Start playback."

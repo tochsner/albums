@@ -39,6 +39,7 @@ export async function processAlbum(name: string, artist: string) {
 				log.info('Analyzed song lyrics.');
 
 				await supabase.from('Song').insert({
+					track: track.track,
 					title: track.title,
 					artist: deezerData.artist,
 					albumTitle: deezerData.title,
@@ -46,7 +47,7 @@ export async function processAlbum(name: string, artist: string) {
 					themes,
 					lyrics,
 					highlightedLyrics,
-					playbackUrl: track.playbackUrl
+					audio: track.audio
 				});
 				log.info('Stored song into DB.');
 			})

@@ -17,12 +17,21 @@ export const load: PageServerLoad = async () => {
 
 	const songs = await supabase
 		.from('Song')
-		.select('*')
+		.select('title, description, themes, highlightedLyrics')
 		.eq('albumTitle', album.title)
-		.eq('artist', album.artist);
+		.eq('artist', album.artist)
+		.order('track');
+
+	const audios = supabase
+		.from('Song')
+		.select('audio')
+		.eq('albumTitle', album.title)
+		.eq('artist', album.artist)
+		.order('track');
 
 	return {
 		...album,
-		songs: songs.data
+		songs: songs.data,
+		audios
 	};
 };

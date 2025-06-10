@@ -5,11 +5,23 @@ type DeezerAlbum = {
 	imageUrl: string;
 	tracks: {
 		deezerId: number;
+		track: number;
 		title: string;
 		popularity: number;
-		playbackUrl: string;
+		audio: string;
 	}[];
 };
+
+async function downloadAudio(playbackUrl: string) {
+	const response = await fetch(playbackUrl);
+
+	const arrayBuffer = await response.arrayBuffer();
+	const buffer = Buffer.from(arrayBuffer);
+	const contentType = response.headers.get('content-type') || 'audio/mpeg';
+	const base64String = `data:${contentType};base64,${buffer.toString('base64')}`;
+
+	return base64String;
+}
 
 export async function retrieveDeezerData(name: string, artist: string): Promise<DeezerAlbum> {
 	const encodedQuery = encodeURIComponent(`${name} ${artist}`);
@@ -28,11 +40,19 @@ export async function retrieveDeezerData(name: string, artist: string): Promise<
 		title: album.title,
 		artist: album.artist.name,
 		imageUrl: album.cover_big,
-		tracks: tracks.map((track: { id: number; title: string; rank: number; preview: string }) => ({
-			deezerId: track.id,
-			title: track.title,
-			popularity: track.rank,
-			playbackUrl: track.preview
-		}))
+		tracks: await Promise.all(
+			tracks.map(
+				async (
+					track: { id: number; title_short: string; rank: number; preview: string },
+					idx: number
+				) => ({
+					deezerId: track.id,
+					title: track.title_short,
+					popularity: track.rank,
+					audio: await downloadAudio(track.preview),
+					track: idx + 1
+				})
+			)
+		)
 	};
 }

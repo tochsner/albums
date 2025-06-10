@@ -36,8 +36,11 @@
 	$effect.pre(() => {
 		if (!browser || width === undefined) return;
 
-		document.fonts.ready.then(() => {
-			const baselineFont = `${fontWeight} ${minFontSizePx}px ${font}`;
+		const baselineFont = `${fontWeight} ${minFontSizePx}px ${font}`;
+
+		document.fonts.load(baselineFont).then(() => {
+			console.log('Loaded');
+
 			const words = text.split(' ') || [];
 			const wordWidths = words.map((word) => getWordWidth(`${word} `, baselineFont));
 			const maxPossibleLines = Math.min(maxNumLines || 3, words.length);
