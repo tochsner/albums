@@ -40,7 +40,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Anton mx-8 mt-16 rounded-full bg-white px-8 py-6 text-center leading-[115%] font-extrabold text-balance opacity-0"
+			class="font-Anton mx-8 mt-16 rounded-full bg-white px-8 py-6 text-center leading-[115%] text-balance opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -81,7 +81,7 @@
 			/>
 		</svg>
 
-		<div class="font-Anton text-[1.7rem] font-extrabold" style:color={mainForeground}>
+		<div class="font-Anton text-[1.7rem]" style:color={mainForeground}>
 			{artist}
 		</div>
 
@@ -111,7 +111,7 @@
 		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
 		style:background={songBackground}
 	>
-		<Sized font="Anton" fontWeight="bolder" classes="text-center text-white" text={song.title} />
+		<Sized font="Anton" fontWeight="normal" classes="text-center text-white" text={song.title} />
 
 		<button
 			onclick={() => {
@@ -168,7 +168,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(54 57) scale(6)"
+					transform="translate(53 57) scale(6)"
 					opacity={isPlaying ? 1.0 : 0.0}
 					class="transition-opacity ease-out"
 					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"
@@ -176,16 +176,14 @@
 			</svg>
 		</button>
 
-		<span
-			class="font-Anton mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
-		>
+		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
 			Themes
 		</span>
 
 		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="font-Anton rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] font-extrabold text-white
+					class="font-Anton rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
 
 "
 					style:background={songBackground}
@@ -195,20 +193,18 @@
 			{/each}
 		</div>
 
-		<span class="itlic font-Anton mx-4 my-4 text-center text-[1.2rem] font-extrabold text-white">
+		<span class="itlic font-Anton mx-4 my-4 text-center text-[1.2rem] text-white">
 			{song.description}
 		</span>
 
-		<span
-			class="font-Anton mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
-		>
+		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
 			Lyrics
 		</span>
 
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="font-Anton bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] font-extrabold text-white italic"
+					class="font-Anton bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
 					style:background={lyricsBackground}
 				>
 					{lyrics}
