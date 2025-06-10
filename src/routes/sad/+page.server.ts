@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
 
 export const load: PageServerLoad = async () => {
-	const today = Date.UTC();
+	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 	const todayISOString = today.toISOString();
 
