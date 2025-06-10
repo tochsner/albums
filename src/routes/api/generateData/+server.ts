@@ -11,7 +11,7 @@ export async function GET() {
 
 		try {
 			// await processAlbum(randomAlbum.album, randomAlbum.artist);
-			await processAlbum('Riot!', 'Paramount');
+			await processAlbum('Happier Than Ever', 'Billie Eilish');
 		} catch (error) {
 			log.error(`Error processing album: ${error}`);
 			continue;

@@ -12,8 +12,8 @@
 	let titleFontSize = title.length < 30 ? '3.0rem' : '2.2rem';
 
 	let palette = CorePalette.contentOf(color);
-	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 90, 20)} 0%,${chex(palette.a1, 90, 20)} 100%)`;
-	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 90, 20)} 0%,${chex(palette.a1, 80, 40)} 100%)`;
+	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 90, 30)} 0%,${chex(palette.a1, 90, 30)} 100%)`;
+	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 80, 10)} 0%,${chex(palette.a1, 70, 20)} 100%)`;
 	let mainForeground = hex(palette.a2, 60);
 
 	let currentPlaybackIdx = $state<number>();
