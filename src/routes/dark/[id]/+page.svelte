@@ -125,7 +125,7 @@
 		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
-		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white" style:color={mainForeground}>
+		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white/50">
 			{idx + 1}.
 		</span>
 

@@ -116,7 +116,7 @@
 		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
-		<span class="font-Aboreto py-6 text-center text-[1.7rem] text-white">
+		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/50">
 			{idx + 1}.
 		</span>
 
