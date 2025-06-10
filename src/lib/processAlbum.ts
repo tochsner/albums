@@ -6,7 +6,7 @@ import { supabase } from '$lib/supabaseClient';
 
 import log from 'loglevel';
 
-export async function processAlbum(name: string, artist: string) {
+export async function processAlbum(name: string, artist: string, mood: string, genre: string) {
 	log.info('Processing album:', name, artist);
 
 	const deezerData = await retrieveDeezerData(name, artist);
@@ -19,7 +19,9 @@ export async function processAlbum(name: string, artist: string) {
 		title: deezerData.title,
 		artist: deezerData.artist,
 		imageUrl: deezerData.imageUrl,
-		color
+		color,
+		mood,
+		genre
 	});
 	log.info('Stored album into DB.');
 

@@ -15,7 +15,7 @@ const LyricsAnalysis = z.object({
 
 export async function analyzeSongLyrics(name: string, artist: string, lyrics: string) {
 	const response = await openai.responses.parse({
-		model: 'gpt-4.1',
+		model: 'gpt-4.1-mini',
 		input: [
 			{
 				role: 'system',

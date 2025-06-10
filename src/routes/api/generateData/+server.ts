@@ -3,22 +3,28 @@ import { processAlbum } from '$lib/processAlbum';
 import log from 'loglevel';
 
 export async function GET() {
-	while (true) {
-		log.info('Choose random album of the day.');
+	const genres = ['pop', 'rock', 'hiphop', 'edm', 'rnb', 'latin'];
 
-		const randomAlbum = albums[Math.floor(Math.random() * albums.length)];
-		log.info(`Selected album: ${randomAlbum.album}.`);
+	await Promise.all(
+		genres.map(async (genre) => {
+			while (true) {
+				log.info('Choose random album of the day for genre:', genre);
 
-		try {
-			// await processAlbum(randomAlbum.album, randomAlbum.artist);
-			await processAlbum('Fear Incoulum', 'TOOL');
-		} catch (error) {
-			log.error(`Error processing album: ${error}`);
-			continue;
-		}
+				const genreAlbums = albums.filter((a) => a.genre === genre);
+				const randomAlbum = genreAlbums[Math.floor(Math.random() * genreAlbums.length)];
+				log.info(`Selected album: ${randomAlbum.album}.`);
 
-		log.info(`Processed album.`);
+				try {
+					await processAlbum(randomAlbum.album, randomAlbum.artist, randomAlbum.mood, genre);
+				} catch (error) {
+					log.error(`Error processing album: ${error}`);
+					continue;
+				}
 
-		return new Response(JSON.stringify(randomAlbum));
-	}
+				log.info(`Processed album.`);
+			}
+		})
+	);
+
+	return new Response();
 }
