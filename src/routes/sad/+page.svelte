@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { hex } from '$lib/colorUtilsClient';
+	import { chex, hex } from '$lib/colorUtilsClient';
 	import { CorePalette } from '@material/material-color-utilities';
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
@@ -12,8 +12,8 @@
 	let titleFontSize = title.length < 30 ? '3.0rem' : '2.2rem';
 
 	let palette = CorePalette.contentOf(color);
-	let mainBackground = `linear-gradient(45deg,${hex(palette.a3, 80)} 0%,${hex(palette.a1, 80)} 100%)`;
-	let darkBackground = `linear-gradient(45deg, ${hex(palette.a3, 35)} 0%,${hex(palette.a1, 35)} 100%)`;
+	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 90, 20)} 0%,${chex(palette.a1, 90, 20)} 100%)`;
+	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 90, 20)} 0%,${chex(palette.a1, 80, 40)} 100%)`;
 	let mainForeground = hex(palette.a2, 60);
 
 	let currentPlaybackIdx = $state<number>();
@@ -120,7 +120,7 @@
 
 	<div
 		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
-		style:background={darkBackground}
+		style:background={songBackground}
 	>
 		<Sized
 			font="EB Garamond"
@@ -201,10 +201,10 @@
 		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="font-EBGaramond rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] font-extrabold text-white
+					class="font-EBGaramond rounded-lg border-2 border-white px-4 py-1 text-[1.2rem] font-extrabold text-white
 
 "
-					style:background={darkBackground}
+					style:background={songBackground}
 				>
 					{theme}
 				</span>

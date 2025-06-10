@@ -8,7 +8,6 @@ export const load: PageServerLoad = async () => {
 		.select('*')
 		.order('created_at', { ascending: false })
 		.limit(1);
-
 	if (!data || data.length === 0) {
 		throw new Error('No albums found');
 	}
