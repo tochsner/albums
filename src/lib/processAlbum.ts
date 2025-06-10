@@ -24,31 +24,33 @@ export async function processAlbum(name: string, artist: string) {
 	log.info('Stored album into DB.');
 
 	try {
-		for (const track of deezerData.tracks) {
-			log.info('Processing track:', track.title);
+		await Promise.all(
+			deezerData.tracks.map(async (track) => {
+				log.info('Processing track:', track.title);
 
-			const { lyrics } = await retrieveGeniusData(track.title, deezerData.artist);
-			log.info('Retrieved lyrics.');
+				const { lyrics } = await retrieveGeniusData(track.title, deezerData.artist);
+				log.info('Retrieved lyrics.');
 
-			const { description, themes, highlightedLyrics } = await analyzeSongLyrics(
-				track.title,
-				deezerData.artist,
-				lyrics
-			);
-			log.info('Analyzed song lyrics.');
+				const { description, themes, highlightedLyrics } = await analyzeSongLyrics(
+					track.title,
+					deezerData.artist,
+					lyrics
+				);
+				log.info('Analyzed song lyrics.');
 
-			await supabase.from('Song').insert({
-				title: track.title,
-				artist: deezerData.artist,
-				albumTitle: deezerData.title,
-				description,
-				themes,
-				lyrics,
-				highlightedLyrics,
-				playbackUrl: track.playbackUrl
-			});
-			log.info('Stored song into DB.');
-		}
+				await supabase.from('Song').insert({
+					title: track.title,
+					artist: deezerData.artist,
+					albumTitle: deezerData.title,
+					description,
+					themes,
+					lyrics,
+					highlightedLyrics,
+					playbackUrl: track.playbackUrl
+				});
+				log.info('Stored song into DB.');
+			})
+		);
 	} catch (error) {
 		log.error('Error processing album:', error);
 

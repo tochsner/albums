@@ -36,45 +36,48 @@
 	$effect.pre(() => {
 		if (!browser || width === undefined) return;
 
-		const baselineFont = `${fontWeight} ${minFontSizePx}px ${font}`;
-		const words = text.split(' ') || [];
-		const wordWidths = words.map((word) => getWordWidth(`${word} `, baselineFont));
-		const maxPossibleLines = Math.min(maxNumLines || 3, words.length);
+		document.fonts.ready.then(() => {
+			const baselineFont = `${fontWeight} ${minFontSizePx}px ${font}`;
+			const words = text.split(' ') || [];
+			const wordWidths = words.map((word) => getWordWidth(`${word} `, baselineFont));
+			const maxPossibleLines = Math.min(maxNumLines || 3, words.length);
 
-		for (let numLines = 1; numLines <= maxPossibleLines; numLines++) {
-			const partitions = getPartitions(wordWidths, numLines);
-			const partitionedLines = partitions
-				.filter((partition) => partition.length > 0)
-				.map((partition) => partition.map((idx) => words[idx]).join(' '));
+			for (let numLines = 1; numLines <= maxPossibleLines; numLines++) {
+				const partitions = getPartitions(wordWidths, numLines);
+				const partitionedLines = partitions
+					.filter((partition) => partition.length > 0)
+					.map((partition) => partition.map((idx) => words[idx]).join(' '));
 
-			const tempLines = [];
-			let accTop = 0.0;
-			let currentMaxFontSizePx = 0.0;
-			for (const line of partitionedLines) {
-				const dimensions = getWordDimensions(line, baselineFont);
-				const scaleFactor = width / dimensions.width;
-				const fontSize = minFontSizePx * scaleFactor;
-				const height =
-					(dimensions.actualBoundingBoxAscent + dimensions.actualBoundingBoxDescent) * scaleFactor;
-				const lineHeight = dimensions.actualBoundingBoxAscent * scaleFactor;
+				const tempLines = [];
+				let accTop = 0.0;
+				let currentMaxFontSizePx = 0.0;
+				for (const line of partitionedLines) {
+					const dimensions = getWordDimensions(line, baselineFont);
+					const scaleFactor = width / dimensions.width;
+					const fontSize = minFontSizePx * scaleFactor;
+					const height =
+						(dimensions.actualBoundingBoxAscent + dimensions.actualBoundingBoxDescent) *
+						scaleFactor;
+					const lineHeight = dimensions.actualBoundingBoxAscent * scaleFactor;
 
-				tempLines.push({
-					text: line,
-					font: `${fontWeight} ${fontSize}px ${font}`,
-					top: `${accTop}px`,
-					lineHeight: `${lineHeight}px`
-				});
-				accTop += height + gapPx;
-				currentMaxFontSizePx = Math.max(currentMaxFontSizePx, fontSize);
+					tempLines.push({
+						text: line,
+						font: `${fontWeight} ${fontSize}px ${font}`,
+						top: `${accTop}px`,
+						lineHeight: `${lineHeight}px`
+					});
+					accTop += height + gapPx;
+					currentMaxFontSizePx = Math.max(currentMaxFontSizePx, fontSize);
+				}
+
+				if (1 < numLines && maxFontSizePx < currentMaxFontSizePx) {
+					break;
+				}
+
+				lines = tempLines;
+				totalHeight = `${accTop}px`;
 			}
-
-			if (1 < numLines && maxFontSizePx < currentMaxFontSizePx) {
-				break;
-			}
-
-			lines = tempLines;
-			totalHeight = `${accTop}px`;
-		}
+		});
 	});
 </script>
 

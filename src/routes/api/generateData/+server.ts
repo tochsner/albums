@@ -10,7 +10,8 @@ export async function GET() {
 		log.info(`Selected album: ${randomAlbum.album}.`);
 
 		try {
-			await processAlbum(randomAlbum.album, randomAlbum.artist);
+			// await processAlbum(randomAlbum.album, randomAlbum.artist);
+			await processAlbum('Riot!', 'Paramount');
 		} catch (error) {
 			log.error(`Error processing album: ${error}`);
 			continue;
