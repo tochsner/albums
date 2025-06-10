@@ -14,7 +14,7 @@
 	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 10, 90)} 0%,${chex(palette.a1, 20, 90)} 100%)`;
 	let mainForeground = chex(palette.a1, 20, 90);
 
-	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 20, 30)} 0%,${chex(palette.a1, 10, 40)} 100%)`;
+	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 15, 30)} 0%,${chex(palette.a1, 5, 40)} 100%)`;
 
 	let currentPlaybackIdx = $state<number>();
 </script>
@@ -185,7 +185,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(80 78) scale(6)"
+					transform="translate(80 79) scale(6)"
 					opacity={isPlaying ? 1.0 : 0.0}
 					class="transition-opacity ease-out"
 					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"

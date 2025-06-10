@@ -11,7 +11,7 @@ export async function GET() {
 
 		try {
 			// await processAlbum(randomAlbum.album, randomAlbum.artist);
-			await processAlbum('I Let It in and It Took Everything', 'Loathe');
+			await processAlbum('Fear Incoulum', 'TOOL');
 		} catch (error) {
 			log.error(`Error processing album: ${error}`);
 			continue;
