@@ -26,7 +26,7 @@
 	{:then loadedAlbums}
 		{#each loadedAlbums as album (album.id)}
 			<a
-				class="font-Bebas rounded-full border border-orange-300 bg-white px-6 py-3 text-xl"
+				class="font-Bebas rounded-full border border-orange-300 bg-orange-50 px-6 py-3 text-xl"
 				href={`/${album.mood}/${album.id}`}
 			>
 				{genreMap[album.genre as keyof typeof genreMap]}

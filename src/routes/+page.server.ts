@@ -15,6 +15,7 @@ export const load: PageServerLoad = async () => {
 			artist: string;
 			genre: string;
 			mood: string;
+			color: string;
 		}[]
 	>;
 

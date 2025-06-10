@@ -8,7 +8,7 @@
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, audios } = data;
 
-	let titleFontSize = title.length < 30 ? '4.0rem' : '3.0rem';
+	let titleFontSize = title.length < 30 ? '4.0rem' : '2.8em';
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 10, 90)} 0%,${chex(palette.a1, 20, 90)} 100%)`;
@@ -42,7 +42,7 @@
 			</svg>
 
 			<div
-				class="font-Bebas z-40 mx-4 my-6 max-w-4/5 text-center leading-[115%] text-balance text-white"
+				class="font-Bebas z-40 mx-4 my-6 max-w-3/4 text-center leading-[115%] text-balance text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 			>
@@ -122,9 +122,13 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
+		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white" style:color={mainForeground}>
+			{idx + 1}.
+		</span>
+
 		<Sized
 			font="Bebas Neue"
 			fontWeight="normal"

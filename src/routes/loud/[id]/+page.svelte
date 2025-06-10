@@ -106,9 +106,13 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
+		<span class="font-Anton py-6 text-center text-[2.3rem] text-white" style:color={mainForeground}>
+			{idx + 1}.
+		</span>
+
 		<Sized font="Anton" fontWeight="normal" classes="text-center text-white" text={song.title} />
 
 		<button

@@ -119,9 +119,13 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
+		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/70">
+			{idx + 1}.
+		</span>
+
 		<Sized
 			font="EB Garamond"
 			fontWeight="bolder"

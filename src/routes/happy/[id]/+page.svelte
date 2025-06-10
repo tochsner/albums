@@ -47,7 +47,7 @@
 			</svg>
 
 			<div
-				class="font-Fredoka z-20 mx-4 my-6 h-full max-w-2/3 text-center leading-[115%] font-semibold text-balance text-white"
+				class="font-Fredoka z-20 mx-4 my-6 h-full text-center leading-[115%] font-semibold text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 			>
@@ -122,9 +122,13 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip pt-16"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip"
 		style:background={songBackground}
 	>
+		<span class="font-Bebas py-6 text-center text-[2rem] text-white" style:color={mainForeground}>
+			{idx + 1}.
+		</span>
+
 		<Sized font="Fredoka" fontWeight="600" classes="text-center text-white" text={song.title} />
 
 		<button
