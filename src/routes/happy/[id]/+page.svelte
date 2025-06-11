@@ -4,17 +4,18 @@
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
+	import { shrinkWrap } from '$lib/fitUtils';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, audios } = data;
 
-	let titleFontSize = title.length < 30 ? '3.0rem' : '2.0rem';
+	let titleFontSize = title.length < 30 ? '2.8rem' : '2.0rem';
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 70, 40)} 0%,${chex(palette.a1, 70, 50)} 100%)`;
 	let mainForeground = chex(palette.a1, 60, 70);
 
-	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 70, 30)} 0%,${chex(palette.a1, 85, 40)} 100%)`;
+	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 75, 40)} 0%,${chex(palette.a1, 90, 40)} 100%)`;
 
 	let currentPlaybackIdx = $state<number>();
 </script>
@@ -47,9 +48,10 @@
 			</svg>
 
 			<div
-				class="font-Fredoka z-20 mx-4 my-6 h-full text-center leading-[115%] font-semibold text-balance overflow-ellipsis text-white"
+				class="font-Baloo z-20 mx-12 my-6 h-full text-center leading-[115%] font-semibold text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
+				use:shrinkWrap
 			>
 				{title}
 			</div>
@@ -64,9 +66,16 @@
 				<mask id="fadeMask">
 					<path
 						transform="translate(10 5)"
-						d="M16.844 32.5156C18.0502 21.0579 27.2279 12.0738 38.7087 11.1121L165.379 0.501838C205.568 -2.86453 238.815 31.3296 234.322 71.4083L219.682 202.01C218.404 213.409 209.238 222.311 197.806 223.255L52.7535 235.231C22.7633 237.708 -2.08326 212.295 1.06745 182.368L16.844 32.5156Z"
+						d="M14.7651 51.2616C17.1776 28.3462 35.533 10.3782 58.4947 8.45481L155.676 0.314567C200.889 -3.4726 238.292 34.9958 233.238 80.0844L221.881 181.389C219.325 204.188 200.994 221.991 178.13 223.879L52.7535 234.231C22.7633 236.708 -2.08326 211.295 1.06745 181.368L14.7651 51.2616Z"
 						fill="white"
-					/>
+					>
+						<animate
+							attributeName="d"
+							dur="12s"
+							repeatCount="indefinite"
+							values="M14.7651 51.2616C17.1776 28.3462 35.533 10.3782 58.4947 8.45481L155.676 0.314567C200.889 -3.4726 238.292 34.9958 233.238 80.0844L221.881 181.389C219.325 204.188 200.994 221.991 178.13 223.879L52.7535 234.231C22.7633 236.708 -2.08326 211.295 1.06745 181.368L14.7651 51.2616Z;M2.38144 53.0516C2.72921 27.7224 22.7001 7.02349 48.0005 5.76937L152.808 0.574153C196.319 -1.58263 231.763 35.0928 228.121 78.5045L219.63 179.722C217.569 204.292 197.229 223.304 172.576 223.704L49.4522 225.699C22.3832 226.137 0.307332 204.116 0.679002 177.046L2.38144 53.0516Z;M14.7651 51.2616C17.1776 28.3462 35.533 10.3782 58.4947 8.45481L155.676 0.314567C200.889 -3.4726 238.292 34.9958 233.238 80.0844L221.881 181.389C219.325 204.188 200.994 221.991 178.13 223.879L52.7535 234.231C22.7633 236.708 -2.08326 211.295 1.06745 181.368L14.7651 51.2616Z"
+						/>
+					</path>
 				</mask>
 			</defs>
 
@@ -91,7 +100,7 @@
 			/>
 		</svg>
 
-		<div class="font-Fredoka text-[1.7rem] font-semibold text-white">
+		<div class="font-Baloo text-[1.7rem] font-semibold text-white">
 			{artist}
 		</div>
 
@@ -129,7 +138,12 @@
 			{idx + 1}.
 		</span>
 
-		<Sized font="Fredoka" fontWeight="600" classes="text-center text-white" text={song.title} />
+		<Sized
+			font="'Baloo Bhaijaan 2'"
+			fontWeight="600"
+			classes="text-center text-white"
+			text={song.title}
+		/>
 
 		<button
 			onclick={() => {
@@ -155,16 +169,6 @@
 							<feFuncB type="linear" slope="1.5" />
 						</feComponentTransfer>
 					</filter>
-
-					<radialGradient id="radialFade" cx="50%" cy="50%" r="50%">
-						<stop offset="0%" style="stop-color:white;stop-opacity:1" />
-						<stop offset="70%" style="stop-color:white;stop-opacity:0.8" />
-						<stop offset="100%" style="stop-color:white;stop-opacity:0" />
-					</radialGradient>
-
-					<mask id="fadeMask">
-						<rect width="100%" height="100%" fill="url(#radialFade)" />
-					</mask>
 				</defs>
 
 				<image
@@ -194,7 +198,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(53 57) scale(6)"
+					transform="translate(52 54) scale(6)"
 					opacity={isPlaying ? 1.0 : 0.0}
 					class="transition-opacity ease-out"
 					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"
@@ -203,7 +207,7 @@
 		</button>
 
 		<span
-			class="font-Fredoka mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+			class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
 		>
 			Themes
 		</span>
@@ -211,7 +215,7 @@
 		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 			{#each song.themes as theme (theme)}
 				<span
-					class="font-Fredoka rounded-full bg-white/90 px-4 py-1 text-[1.2rem] font-semibold text-white"
+					class="font-Baloo rounded-full bg-white/90 px-4 pt-1 text-[1.2rem] font-semibold text-white"
 					style:color={mainForeground}
 				>
 					{theme}
@@ -219,12 +223,12 @@
 			{/each}
 		</div>
 
-		<span class="itlic font-Fredoka mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
+		<span class="itlic font-Baloo mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
 			{song.description}
 		</span>
 
 		<span
-			class="font-Fredoka mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+			class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
 		>
 			Lyrics
 		</span>
@@ -232,7 +236,7 @@
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="font-Fredoka rounded-xl bg-white/20 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] font-semibold text-white italic"
+					class="font-Baloo rounded-full bg-white/20 pt-1 pr-4 pl-7 -indent-4 text-[1.2rem] font-semibold text-white italic"
 				>
 					{lyrics}
 				</span>
