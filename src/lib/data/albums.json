@@ -121,7 +121,7 @@
 	{ "album": "Boy in Da Corner", "artist": "Dizzee Rascal", "mood": "loud", "genre": "hiphop" },
 	{ "album": "Night Ripper", "artist": "Girl Talk", "mood": "happy", "genre": "edm" },
 	{ "album": "Rounds", "artist": "Four Tet", "mood": "mellow", "genre": "edm" },
-	{ "album": "Like Water for Chocolate", "artist": "Common", "mood": "mellow", "genre": "hiphop" },
+	{ "album": "Like Water for Chocolate", "artist": "Common", "mood": "happy", "genre": "hiphop" },
 	{ "album": "Leviathan", "artist": "Mastodon", "mood": "loud", "genre": "rock" },
 	{ "album": "It Still Moves", "artist": "My Morning Jacket", "mood": "mellow", "genre": "rock" },
 	{
@@ -153,7 +153,7 @@
 	{
 		"album": "Sometimes I Sit and Think, and Sometimes I Just Sit",
 		"artist": "Courtney Barnett",
-		"mood": "mellow",
+		"mood": "loud",
 		"genre": "rock"
 	},
 	{
@@ -180,7 +180,7 @@
 	},
 	{ "album": "Survivor", "artist": "Destiny's Child", "mood": "happy", "genre": "rnb" },
 	{ "album": "Rough and Rowdy Ways", "artist": "Bob Dylan", "mood": "dark", "genre": "rock" },
-	{ "album": "Currents", "artist": "Tame Impala", "mood": "mellow", "genre": "rock" },
+	{ "album": "Currents", "artist": "Tame Impala", "mood": "happy", "genre": "rock" },
 	{ "album": "Yeezus", "artist": "Kanye West", "mood": "loud", "genre": "hiphop" },
 	{
 		"album": "Merriweather Post Pavilion",
@@ -188,7 +188,7 @@
 		"mood": "happy",
 		"genre": "rock"
 	},
-	{ "album": "The Off-Season", "artist": "J. Cole", "mood": "mellow", "genre": "hiphop" },
+	{ "album": "The Off-Season", "artist": "J. Cole", "mood": "loud", "genre": "hiphop" },
 	{ "album": "Die Lit", "artist": "Playboi Carti", "mood": "dark", "genre": "hiphop" },
 	{ "album": "St. Cloud", "artist": "Waxahatchee", "mood": "sad", "genre": "rock" },
 	{ "album": "Mr. Money With the Vibe", "artist": "Asake", "mood": "happy", "genre": "rnb" },
@@ -210,7 +210,7 @@
 		"genre": "rock"
 	},
 	{ "album": "Teenage Dream", "artist": "Katy Perry", "mood": "happy", "genre": "pop" },
-	{ "album": "Illinois", "artist": "Sufjan Stevens", "mood": "mellow", "genre": "rock" },
+	{ "album": "Illinois", "artist": "Sufjan Stevens", "mood": "happy", "genre": "rock" },
 	{ "album": "Map of the Soul: 7", "artist": "BTS", "mood": "happy", "genre": "pop" },
 	{ "album": "Settle", "artist": "Disclosure", "mood": "happy", "genre": "edm" },
 	{
@@ -263,7 +263,7 @@
 	{ "album": "Night Time, My Time", "artist": "Sky Ferreira", "mood": "dark", "genre": "pop" },
 	{ "album": "So Much Fun", "artist": "Young Thug", "mood": "happy", "genre": "hiphop" },
 	{ "album": "Energía", "artist": "J Balvin", "mood": "happy", "genre": "latin" },
-	{ "album": "Telefone", "artist": "Noname", "mood": "mellow", "genre": "hiphop" },
+	{ "album": "Telefone", "artist": "Noname", "mood": "happy", "genre": "hiphop" },
 	{ "album": "Jaguar II", "artist": "Victoria Monét", "mood": "happy", "genre": "rnb" },
 	{ "album": "Demon Days", "artist": "Gorillaz", "mood": "dark", "genre": "edm" },
 	{
@@ -290,7 +290,7 @@
 	{
 		"album": "Modern Vampires of the City",
 		"artist": "Vampire Weekend",
-		"mood": "mellow",
+		"mood": "happy",
 		"genre": "rock"
 	},
 	{ "album": "White Blood Cells", "artist": "The White Stripes", "mood": "loud", "genre": "rock" },
@@ -315,7 +315,7 @@
 	{ "album": "Thank U, Next", "artist": "Ariana Grande", "mood": "sad", "genre": "pop" },
 	{ "album": "The Rising", "artist": "Bruce Springsteen", "mood": "sad", "genre": "rock" },
 	{ "album": "Kala", "artist": "M.I.A.", "mood": "loud", "genre": "edm" },
-	{ "album": "Donuts", "artist": "J Dilla", "mood": "mellow", "genre": "hiphop" },
+	{ "album": "Donuts", "artist": "J Dilla", "mood": "happy", "genre": "hiphop" },
 	{ "album": "AM", "artist": "Arctic Monkeys", "mood": "dark", "genre": "rock" },
 	{ "album": "Hell Hath No Fury", "artist": "Clipse", "mood": "loud", "genre": "hiphop" },
 	{ "album": "In Rainbows", "artist": "Radiohead", "mood": "mellow", "genre": "rock" },
@@ -327,7 +327,7 @@
 	{ "album": "Puberty 2", "artist": "Mitski", "mood": "sad", "genre": "rock" },
 	{ "album": "Platinum", "artist": "Miranda Lambert", "mood": "loud", "genre": "pop" },
 	{ "album": "The College Dropout", "artist": "Kanye West", "mood": "happy", "genre": "hiphop" },
-	{ "album": "Sound of Silver", "artist": "LCD Soundsystem", "mood": "mellow", "genre": "edm" },
+	{ "album": "Sound of Silver", "artist": "LCD Soundsystem", "mood": "loud", "genre": "edm" },
 	{ "album": "Barrio Fino", "artist": "Daddy Yankee", "mood": "happy", "genre": "latin" },
 	{ "album": "The Marshall Mathers LP", "artist": "Eminem", "mood": "loud", "genre": "hiphop" },
 	{

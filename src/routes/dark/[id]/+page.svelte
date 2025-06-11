@@ -189,7 +189,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(80 79) scale(6)"
+					transform="translate(79 81) scale(6)"
 					opacity={isPlaying ? 1.0 : 0.0}
 					class="transition-opacity ease-out"
 					d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z"

@@ -177,7 +177,7 @@
 					stroke-linejoin="round"
 					stroke="white"
 					stroke-width="2px"
-					transform="translate(51 55) scale(6)"
+					transform="translate(53 55) scale(6)"
 					opacity={isPlaying ? 0.0 : 1.0}
 					class="transition-opacity ease-in"
 					d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"

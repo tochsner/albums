@@ -32,7 +32,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Aboreto mt-19 text-center leading-[115%] text-balance text-white"
+			class="font-Aboreto mx-4 mt-19 text-center leading-[115%] text-balance text-white"
 			style:font-size={titleFontSize}
 		>
 			{title}
@@ -221,7 +221,7 @@
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="font-Aboreto bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
+					class="font-Aboreto rounded-md bg-red-50 py-1 pr-4 pl-7 -indent-4 text-[1.2rem] text-white italic"
 					style:background={lyricsBackground}
 				>
 					{lyrics}
