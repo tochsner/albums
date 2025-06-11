@@ -6,7 +6,7 @@
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 
 	let { data }: PageProps = $props();
-	let {  title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs } = data;
 
 	let titleFontSize = title.length < 24 ? '4.0rem' : '3.0em';
 
@@ -29,7 +29,7 @@
 
 {#snippet albumOverview()}
 	<div class="flex w-full flex-col items-center justify-center" style:background={mainBackground}>
-		<div class="relative flex aspect-square w-full items-center justify-center">
+		<div class="relative flex aspect-square w-full items-center justify-center sm:px-[25%]">
 			<svg
 				width="100%"
 				height="393"
@@ -122,7 +122,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[25%]"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white/50">

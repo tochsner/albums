@@ -7,7 +7,7 @@
 	import { shrinkWrap } from '$lib/fitUtils';
 
 	let { data }: PageProps = $props();
-	let {  title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs } = data;
 
 	let titleFontSize = title.length < 30 ? '2.8rem' : '2.0rem';
 
@@ -30,7 +30,7 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12"
+		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[25%]"
 		style:background={mainBackground}
 	>
 		<div class="relative mt-19 flex items-center justify-center">
@@ -131,7 +131,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[25%]"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2rem] text-white/60">

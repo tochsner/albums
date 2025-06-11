@@ -6,7 +6,7 @@
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 
 	let { data }: PageProps = $props();
-	let {  title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs } = data;
 
 	let titleFontSize = title.length < 30 ? '3.0rem' : '2.0rem';
 
@@ -28,7 +28,7 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12"
+		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[25%]"
 		style:background={mainBackground}
 	>
 		<div
@@ -113,7 +113,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30 sm:px-[25%]"
 		style:background={songBackground}
 	>
 		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/50">
