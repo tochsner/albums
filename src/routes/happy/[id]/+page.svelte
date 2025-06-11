@@ -7,7 +7,7 @@
 	import { shrinkWrap } from '$lib/fitUtils';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs, audios } = data;
+	let {  title, artist, imageUrl, color, songs } = data;
 
 	let titleFontSize = title.length < 30 ? '2.8rem' : '2.0rem';
 
@@ -26,7 +26,7 @@
 	{@render songOverview(idx, song)}
 {/each}
 
-<AudioPlayback {audios} {currentPlaybackIdx} />
+<AudioPlayback {songs} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
 	<div
@@ -122,7 +122,7 @@
 	song: {
 		idx: number;
 		title: string;
-		playbackUrl: string;
+		previewUrl: string;
 		description: string;
 		themes: string[];
 		highlightedLyrics: string[];

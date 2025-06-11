@@ -13,8 +13,8 @@ type DeezerAlbum = {
 	}[];
 };
 
-async function downloadAudio(playbackUrl: string) {
-	const response = await fetch(playbackUrl);
+async function downloadAudio(previewUrl: string) {
+	const response = await fetch(previewUrl);
 
 	const arrayBuffer = await response.arrayBuffer();
 	const buffer = Buffer.from(arrayBuffer);
@@ -59,32 +59,20 @@ export async function retrieveDeezerData(name: string, artist: string): Promise<
 	};
 }
 
-export async function retrieveDeezerDataFromId(deezerId: number): Promise<DeezerAlbum> {
-	const albumSearchResponse = await fetch(`https://api.deezer.com/album/${deezerId}`);
-	const albumSearchResults = await albumSearchResponse.json();
-	const album = albumSearchResults.data[0];
+export async function retrieveDeezerSongData(
+	deezerId: number
+): Promise<DeezerAlbum['tracks'][number]> {
+	const searchResponse = await fetch(`https://api.deezer.com/track/${deezerId}`);
+	const song = await searchResponse.json();
 
-	if (!album) throw new Error('Album not found');
+	if (!song) throw new Error('Song not found');
 
 	return {
-		deezerId: album.id,
-		title: album.title,
-		artist: album.artist.name,
-		imageUrl: album.cover_big,
-		tracks: await Promise.all(
-			album.tracks.map(
-				async (
-					track: { id: number; title_short: string; rank: number; preview: string },
-					idx: number
-				) => ({
-					deezerId: track.id,
-					title: track.title_short,
-					popularity: track.rank,
-					audio: await downloadAudio(track.preview),
-					track: idx + 1,
-					previewUrl: track.preview
-				})
-			)
-		)
+		deezerId: song.id,
+		title: song.title_short,
+		popularity: song.rank,
+		audio: await downloadAudio(song.preview),
+		track: song.track_position,
+		previewUrl: song.preview
 	};
 }

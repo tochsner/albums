@@ -1,4 +1,4 @@
-import { retrieveDeezerDataFromId } from '$lib/processing/retrieveDeezerData';
+import { retrieveDeezerSongData } from '$lib/processing/retrieveDeezerData';
 import { supabase } from '$lib/supabaseClient';
 import log from 'loglevel';
 
@@ -13,12 +13,9 @@ export async function GET() {
 	}
 
 	for (const song of songs) {
-		const { tracks } = await retrieveDeezerDataFromId(song.deezerId);
-
-		for (const track of tracks) {
-			const { previewUrl } = track;
-			await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
-		}
+		const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
+		console.log(previewUrl, song.id);
+		await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
 	}
 
 	return new Response();

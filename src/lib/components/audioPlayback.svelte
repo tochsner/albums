@@ -3,25 +3,24 @@
 	import { beforeNavigate } from '$app/navigation';
 
 	let {
-		audios,
+		songs,
 		currentPlaybackIdx
-	}: { audios: Promise<{ data: { audio: string }[] }>; currentPlaybackIdx?: number } = $props();
+	}: { songs: { id: number; previewUrl: string }[]; currentPlaybackIdx?: number } = $props();
 
 	const audioPlayer = browser ? new Audio() : undefined;
 	$effect(() => {
-		if (currentPlaybackIdx === undefined) {
+		if (currentPlaybackIdx === undefined || !audioPlayer) {
 			audioPlayer?.pause();
 			return;
 		}
 
-		audios.then(async (audios) => {
-			if (currentPlaybackIdx === undefined || audioPlayer === undefined) {
-				audioPlayer?.pause();
-			} else {
-				audioPlayer.src = audios.data[currentPlaybackIdx].audio;
-				audioPlayer.play();
-			}
-		});
+		if (songs[currentPlaybackIdx].previewUrl) {
+			audioPlayer.src = songs[currentPlaybackIdx].previewUrl;
+		} else {
+			throw Error('No preview URL available');
+		}
+
+		audioPlayer.play();
 	});
 
 	beforeNavigate(() => {

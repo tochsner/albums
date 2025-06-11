@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const songs = await supabase
 		.from('Song')
-		.select('title, description, themes, highlightedLyrics')
+		.select('title, description, themes, highlightedLyrics, previewUrl')
 		.eq('albumTitle', album.title)
 		.eq('artist', album.artist)
 		.order('track');
