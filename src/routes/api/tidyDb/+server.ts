@@ -2,7 +2,7 @@ import { supabase } from '$lib/supabaseClient';
 import log from 'loglevel';
 
 export async function GET() {
-	log.info('Delete all albums which are older than two days.');
+	log.info('Delete all album of the days which are older than two days.');
 
 	const now = new Date();
 	const yesterdayMorningUTC = new Date(

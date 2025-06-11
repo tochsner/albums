@@ -6,16 +6,24 @@ import { supabase } from '$lib/supabaseClient';
 
 import log from 'loglevel';
 
-export async function processAlbum(name: string, artist: string, mood: string, genre: string) {
+export async function processAlbum(
+	name: string,
+	artist: string,
+	mood: string,
+	genre: string,
+	id?: number,
+	retrieveAudio?: boolean
+) {
 	log.info('Processing album:', name, artist);
 
-	const deezerData = await retrieveDeezerData(name, artist);
+	const deezerData = await retrieveDeezerData(name, artist, retrieveAudio);
 	log.info('Retrieved Deezer data.');
 
 	const color = await getColorFromUrl(deezerData.imageUrl);
 	log.info('Retrieved main color.');
 
 	await supabase.from('Album').insert({
+		id,
 		deezerId: deezerData.deezerId,
 		title: deezerData.title,
 		artist: deezerData.artist,

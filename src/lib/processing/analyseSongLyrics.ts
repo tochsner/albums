@@ -21,14 +21,14 @@ export async function analyzeSongLyrics(name: string, artist: string, lyrics: st
 	while (retries > 0) {
 		try {
 			const response = await openai.responses.parse({
-				model: 'gpt-4.1-mini',
+				model: 'gpt-4.1',
 				input: [
 					{
 						role: 'system',
 						content:
 							'You are a music enthusiast who can analyze lyrics and extract meaningful information from them. Your task is to provide a very brief description of the song (one short sentence, not more than 50 characters, do not include the name of the song), identify the main themes (up to three, at most two words per theme, Title Case), and highlight some key lyrics (up to four consecutive lines). Furthermore, report if the lyrics do not seem to be actual lyrics of a song.'
 					},
-					{ role: 'user', content: `${name} by ${artist}: \n ${lyrics}` }
+					{ role: 'user', content: `${name} by ${artist}: \n ${lyrics.slice(0, 1000)}` }
 				],
 				text: {
 					format: zodTextFormat(LyricsAnalysis, 'analysis')

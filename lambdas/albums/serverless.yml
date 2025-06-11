@@ -1,0 +1,43 @@
+org: tochsner
+app: albums
+service: albums
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  generatePopHandler:
+    handler: handler.generatePop
+    events:
+      - schedule: cron(0 1 * * ? *)
+
+  generateRockHandler:
+    handler: handler.generateRock
+    events:
+      - schedule: cron(5 1 * * ? *)
+
+  generateRnbHandler:
+    handler: handler.generateRnb
+    events:
+      - schedule: cron(10 1 * * ? *)
+
+  generateLatinHandler:
+    handler: handler.generateLatin
+    events:
+      - schedule: cron(15 1 * * ? *)
+
+  generateHiphopHandler:
+    handler: handler.generateHiphop
+    events:
+      - schedule: cron(20 1 * * ? *)
+
+  refreshPlaybackUrlsHandler:
+    handler: handler.refreshPlaybackUrls
+    events:
+      - schedule: cron(*/7 * * * ? *)
+
+  tidyDbHandler:
+    handler: handler.tidyDb
+    events:
+      - schedule: cron(30 1 * * ? *)

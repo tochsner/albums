@@ -24,10 +24,10 @@
 			></div>
 		{/each}
 	{:then loadedAlbums}
-		{#each loadedAlbums as album (album.id)}
+		{#each loadedAlbums as album (album.albumId)}
 			<a
 				class="font-Bebas rounded-full border border-orange-300 bg-orange-50 px-6 py-3 text-xl"
-				href={`/${album.mood}/${album.id}`}
+				href={`/${album.mood}/${album.albumId}`}
 			>
 				{genreMap[album.genre as keyof typeof genreMap]}
 			</a>

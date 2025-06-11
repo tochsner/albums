@@ -1,8 +1,8 @@
 import albums from '$lib/data/albums.json';
-import { processAlbum } from '$lib/processing/processAlbum';
 import log from 'loglevel';
 
 import type { RequestEvent } from './$types';
+import { supabase } from '$lib/supabaseClient';
 
 export async function GET({ params }: RequestEvent) {
 	const { genre } = params;
@@ -14,18 +14,27 @@ export async function GET({ params }: RequestEvent) {
 		const randomAlbum = genreAlbums[Math.floor(Math.random() * genreAlbums.length)];
 		log.info(`Selected album: ${randomAlbum.album}.`);
 
-		try {
-			await processAlbum(randomAlbum.album, randomAlbum.artist, randomAlbum.mood, genre);
-		} catch (error) {
-			log.error(`Error processing album: ${error}`);
+		const now = new Date();
+		const todayMorningUTC = new Date(
+			Date.UTC(
+				now.getUTCFullYear(),
+				now.getUTCMonth(),
+				now.getUTCDate(),
+				0,
+				0,
+				0 // 00:00:00
+			)
+		);
+		const todayMorningUTCIso = todayMorningUTC.toISOString();
 
-			log.info('Wait for 5 seconds before retrying');
-			await new Promise((resolve) => setTimeout(resolve, 5000));
+		await supabase.from('AlbumOfTheDay').insert({
+			date: todayMorningUTCIso,
+			albumId: randomAlbum.id,
+			genre,
+			mood: randomAlbum.mood
+		});
 
-			continue;
-		}
-
-		log.info(`Processed album.`);
+		log.info('Inserted album of the day:', randomAlbum.album);
 
 		return new Response();
 	}

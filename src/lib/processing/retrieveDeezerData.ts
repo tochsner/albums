@@ -8,7 +8,7 @@ type DeezerAlbum = {
 		track: number;
 		title: string;
 		popularity: number;
-		audio: string;
+		audio?: string;
 		previewUrl: string;
 	}[];
 };
@@ -24,11 +24,16 @@ async function downloadAudio(previewUrl: string) {
 	return base64String;
 }
 
-export async function retrieveDeezerData(name: string, artist: string): Promise<DeezerAlbum> {
+export async function retrieveDeezerData(
+	name: string,
+	artist: string,
+	retrieveAudio?: boolean
+): Promise<DeezerAlbum> {
 	const encodedQuery = encodeURIComponent(`${name} ${artist}`);
 
 	const albumSearchResponse = await fetch(`https://api.deezer.com/search/album?q=${encodedQuery}`);
 	const albumSearchResults = await albumSearchResponse.json();
+
 	const album = albumSearchResults.data[0];
 
 	if (!album) throw new Error('Album not found');
@@ -50,7 +55,7 @@ export async function retrieveDeezerData(name: string, artist: string): Promise<
 					deezerId: track.id,
 					title: track.title_short,
 					popularity: track.rank,
-					audio: await downloadAudio(track.preview),
+					audio: retrieveAudio ? await downloadAudio(track.preview) : undefined,
 					track: idx + 1,
 					previewUrl: track.preview
 				})
@@ -60,7 +65,8 @@ export async function retrieveDeezerData(name: string, artist: string): Promise<
 }
 
 export async function retrieveDeezerSongData(
-	deezerId: number
+	deezerId: number,
+	retrieveAudio?: boolean
 ): Promise<DeezerAlbum['tracks'][number]> {
 	const searchResponse = await fetch(`https://api.deezer.com/track/${deezerId}`);
 	const song = await searchResponse.json();
@@ -71,7 +77,7 @@ export async function retrieveDeezerSongData(
 		deezerId: song.id,
 		title: song.title_short,
 		popularity: song.rank,
-		audio: await downloadAudio(song.preview),
+		audio: retrieveAudio ? await downloadAudio(song.preview) : undefined,
 		track: song.track_position,
 		previewUrl: song.preview
 	};
