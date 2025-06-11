@@ -1,7 +1,7 @@
-import { analyzeSongLyrics } from '$lib/analyseSongLyrics';
+import { analyzeSongLyrics } from '$lib/processing/analyseSongLyrics';
 import { getColorFromUrl } from '$lib/colorUtils';
-import { retrieveDeezerData } from '$lib/retrieveDeezerData';
-import { retrieveGeniusData } from '$lib/retrieveGeniusData';
+import { retrieveDeezerData } from '$lib/processing/retrieveDeezerData';
+import { retrieveGeniusData } from '$lib/processing/retrieveGeniusData';
 import { supabase } from '$lib/supabaseClient';
 
 import log from 'loglevel';

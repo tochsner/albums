@@ -10,6 +10,7 @@
 	--font-Fredoka: 'Fredoka';
 	--font-Bebas: 'Bebas neue';
 	--font-Poppins: 'Poppins';
+	--font-Baloo: 'Baloo Bhaijaan 2';
 }
 
 @supports (animation-range: entry-crossing) {
