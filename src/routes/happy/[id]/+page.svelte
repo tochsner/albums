@@ -131,7 +131,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2rem] text-white/60">
