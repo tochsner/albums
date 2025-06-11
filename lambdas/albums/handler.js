@@ -1,33 +1,33 @@
 const url = 'https://albums-lemon.vercel.app/api/';
 
-export async function generatePop() {
-	fetch(url + 'generateData/pop');
-}
+exports.generatePop = async () => {
+	fetch(url + 'chooseAotD/pop');
+};
 
-export async function generateRock() {
-	fetch(url + 'generateData/rock');
-}
+exports.generateRock = async () => {
+	fetch(url + 'chooseAotD/rock');
+};
 
-export async function generateLatin() {
-	fetch(url + 'generateData/latin');
-}
+exports.generateLatin = async () => {
+	fetch(url + 'chooseAotD/latin');
+};
 
-export async function generateHiphop() {
-	fetch(url + 'generateData/hiphop');
-}
+exports.generateHiphop = async () => {
+	fetch(url + 'chooseAotD/hiphop');
+};
 
-export async function generateRnb() {
-	fetch(url + 'generateData/rnb');
-}
+exports.generateRnb = async () => {
+	fetch(url + 'chooseAotD/rnb');
+};
 
-export async function generateEdm() {
-	fetch(url + 'generateData/edm');
-}
+exports.generateEdm = async () => {
+	fetch(url + 'chooseAotD/edm');
+};
 
-export async function refreshPlaybackUrls() {
+exports.refreshPlaybackUrls = async () => {
 	fetch(url + 'refreshPlaybackUrls');
-}
+};
 
-export async function tidyDb() {
+exports.tidyDb = async () => {
 	fetch(url + 'tidyDb');
-}
+};
