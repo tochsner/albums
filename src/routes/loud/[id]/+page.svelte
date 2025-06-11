@@ -34,7 +34,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Anton mx-8 mt-16 rounded-full bg-white px-8 py-6 text-center leading-[115%] text-balance opacity-0"
+			class="font-Anton mx-10 mt-16 rounded-full bg-white px-8 py-6 text-center leading-[115%] text-balance opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -178,41 +178,47 @@
 			</svg>
 		</button>
 
-		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Themes
-		</span>
+		{#if song.themes.length > 0}
+			<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Themes
+			</span>
 
-		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
-			{#each song.themes as theme (theme)}
-				<span
-					class="font-Anton rounded-full border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
+			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
+				{#each song.themes as theme (theme)}
+					<span
+						class="font-Anton rounded-full border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
 
 "
-					style:background={songBackground}
-				>
-					{theme}
-				</span>
-			{/each}
-		</div>
+						style:background={songBackground}
+					>
+						{theme}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
-		<span class="itlic font-Anton mx-4 my-4 text-center text-[1.2rem] text-white">
-			{song.description}
-		</span>
+		{#if song.description != ''}
+			<span class="itlic font-Anton mx-4 my-4 text-center text-[1.2rem] text-white">
+				{song.description}
+			</span>
+		{/if}
 
-		<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Lyrics
-		</span>
+		{#if song.highlightedLyrics.length > 0}
+			<span class="font-Anton mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Lyrics
+			</span>
 
-		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
-			{#each song.highlightedLyrics as lyrics, idx (idx)}
-				<span
-					class="font-Anton bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
-					style:background={lyricsBackground}
-				>
-					{lyrics}
-				</span>
-			{/each}
-		</div>
+			<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
+				{#each song.highlightedLyrics as lyrics, idx (idx)}
+					<span
+						class="font-Anton bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
+						style:background={lyricsBackground}
+					>
+						{lyrics}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

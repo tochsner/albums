@@ -9,6 +9,7 @@ type DeezerAlbum = {
 		title: string;
 		popularity: number;
 		audio: string;
+		previewUrl: string;
 	}[];
 };
 
@@ -50,7 +51,38 @@ export async function retrieveDeezerData(name: string, artist: string): Promise<
 					title: track.title_short,
 					popularity: track.rank,
 					audio: await downloadAudio(track.preview),
-					track: idx + 1
+					track: idx + 1,
+					previewUrl: track.preview
+				})
+			)
+		)
+	};
+}
+
+export async function retrieveDeezerDataFromId(deezerId: number): Promise<DeezerAlbum> {
+	const albumSearchResponse = await fetch(`https://api.deezer.com/album/${deezerId}`);
+	const albumSearchResults = await albumSearchResponse.json();
+	const album = albumSearchResults.data[0];
+
+	if (!album) throw new Error('Album not found');
+
+	return {
+		deezerId: album.id,
+		title: album.title,
+		artist: album.artist.name,
+		imageUrl: album.cover_big,
+		tracks: await Promise.all(
+			album.tracks.map(
+				async (
+					track: { id: number; title_short: string; rank: number; preview: string },
+					idx: number
+				) => ({
+					deezerId: track.id,
+					title: track.title_short,
+					popularity: track.rank,
+					audio: await downloadAudio(track.preview),
+					track: idx + 1,
+					previewUrl: track.preview
 				})
 			)
 		)

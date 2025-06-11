@@ -193,41 +193,47 @@
 			</svg>
 		</button>
 
-		<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Themes
-		</span>
+		{#if song.themes.length > 0}
+			<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Themes
+			</span>
 
-		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
-			{#each song.themes as theme (theme)}
-				<span
-					class="font-Aboreto rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
+			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
+				{#each song.themes as theme (theme)}
+					<span
+						class="font-Aboreto rounded-lg border-3 border-white/20 px-4 py-1 text-[1.2rem] text-white
 
 "
-					style:background={songBackground}
-				>
-					{theme}
-				</span>
-			{/each}
-		</div>
+						style:background={songBackground}
+					>
+						{theme}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
-		<span class="itlic font-Aboreto mx-4 my-4 text-center text-[1.2rem] text-white">
-			{song.description}
-		</span>
+		{#if song.description != ''}
+			<span class="itlic font-Aboreto mx-4 my-4 text-center text-[1.2rem] text-white">
+				{song.description}
+			</span>
+		{/if}
 
-		<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Lyrics
-		</span>
+		{#if song.highlightedLyrics.length > 0}
+			<span class="font-Aboreto mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Lyrics
+			</span>
 
-		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
-			{#each song.highlightedLyrics as lyrics, idx (idx)}
-				<span
-					class="font-Aboreto rounded-md bg-red-50 py-1 pr-4 pl-7 -indent-4 text-[1.2rem] text-white italic"
-					style:background={lyricsBackground}
-				>
-					{lyrics}
-				</span>
-			{/each}
-		</div>
+			<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
+				{#each song.highlightedLyrics as lyrics, idx (idx)}
+					<span
+						class="font-Aboreto rounded-md bg-red-50 py-1 pr-4 pl-7 -indent-4 text-[1.2rem] text-white italic"
+						style:background={lyricsBackground}
+					>
+						{lyrics}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

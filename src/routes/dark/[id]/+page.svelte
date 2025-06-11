@@ -8,7 +8,7 @@
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, audios } = data;
 
-	let titleFontSize = title.length < 30 ? '4.0rem' : '2.8em';
+	let titleFontSize = title.length < 24 ? '4.0rem' : '3.0em';
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 10, 90)} 0%,${chex(palette.a1, 20, 90)} 100%)`;
@@ -197,38 +197,44 @@
 			</svg>
 		</button>
 
-		<span class="font-Bebas mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Themes
-		</span>
+		{#if song.themes.length > 0}
+			<span class="font-Bebas mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Themes
+			</span>
 
-		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
-			{#each song.themes as theme (theme)}
-				<span
-					class="font-Bebas bg-white/90 px-4 pt-1 text-[1.2rem] text-white"
-					style:color={mainForeground}
-				>
-					{theme}
-				</span>
-			{/each}
-		</div>
+			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
+				{#each song.themes as theme (theme)}
+					<span
+						class="font-Bebas bg-white/90 px-4 pt-1 text-[1.2rem] text-white"
+						style:color={mainForeground}
+					>
+						{theme}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
-		<span class="itlic font-Bebas mx-4 my-4 text-center text-[1.2rem] text-white">
-			{song.description}
-		</span>
+		{#if song.description != ''}
+			<span class="itlic font-Bebas mx-4 my-4 text-center text-[1.2rem] text-white">
+				{song.description}
+			</span>
+		{/if}
 
-		<span class="font-Bebas mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
-			Lyrics
-		</span>
+		{#if song.highlightedLyrics.length > 0}
+			<span class="font-Bebas mx-4 mt-12 self-start text-[1.7rem] text-white italic opacity-80">
+				Lyrics
+			</span>
 
-		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
-			{#each song.highlightedLyrics as lyrics, idx (idx)}
-				<span
-					class="font-Bebas bg-white/20 pt-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
-				>
-					{lyrics}
-				</span>
-			{/each}
-		</div>
+			<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
+				{#each song.highlightedLyrics as lyrics, idx (idx)}
+					<span
+						class="font-Bebas bg-white/20 pt-1 pr-2 pl-6 -indent-4 text-[1.2rem] text-white italic"
+					>
+						{lyrics}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

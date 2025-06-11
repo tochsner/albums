@@ -16,6 +16,7 @@ export async function processAlbum(name: string, artist: string, mood: string, g
 	log.info('Retrieved main color.');
 
 	await supabase.from('Album').insert({
+		deezerId: deezerData.deezerId,
 		title: deezerData.title,
 		artist: deezerData.artist,
 		imageUrl: deezerData.imageUrl,
@@ -41,6 +42,7 @@ export async function processAlbum(name: string, artist: string, mood: string, g
 				log.info('Analyzed song lyrics.');
 
 				await supabase.from('Song').insert({
+					deezerId: track.deezerId,
 					track: track.track,
 					title: track.title,
 					artist: deezerData.artist,
@@ -49,7 +51,8 @@ export async function processAlbum(name: string, artist: string, mood: string, g
 					themes,
 					lyrics,
 					highlightedLyrics,
-					audio: track.audio
+					audio: track.audio,
+					previewUrl: track.previewUrl
 				});
 				log.info('Stored song into DB.');
 			})

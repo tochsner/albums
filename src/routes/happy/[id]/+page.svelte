@@ -206,32 +206,37 @@
 			</svg>
 		</button>
 
-		<span
-			class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
-		>
-			Themes
-		</span>
+		{#if song.themes.length > 0}
+			<span
+				class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+			>
+				Themes
+			</span>
 
-		<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
-			{#each song.themes as theme (theme)}
-				<span
-					class="font-Baloo rounded-full bg-white/90 px-4 pt-1 text-[1.2rem] font-semibold text-white"
-					style:color={mainForeground}
-				>
-					{theme}
-				</span>
-			{/each}
-		</div>
+			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
+				{#each song.themes as theme (theme)}
+					<span
+						class="font-Baloo rounded-full bg-white/90 px-4 pt-1 text-[1.2rem] font-semibold text-white"
+						style:color={mainForeground}
+					>
+						{theme}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
-		<span class="itlic font-Baloo mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
-			{song.description}
-		</span>
+		{#if song.description != ''}
+			<span class="itlic font-Baloo mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
+				{song.description}
+			</span>{/if}
 
-		<span
-			class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
-		>
-			Lyrics
-		</span>
+		{#if song.highlightedLyrics.length > 0}
+			<span
+				class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+			>
+				Lyrics
+			</span>
+		{/if}
 
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
