@@ -7,7 +7,7 @@
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 
 	let { data }: PageProps = $props();
-	let {  title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs } = data;
 
 	let titleFontSize = title.length < 30 ? '4.0rem' : '3rem';
 
@@ -26,7 +26,7 @@
 	{@render songOverview(idx, song)}
 {/each}
 
-<AudioPlayback {id} {songs} {songs}{currentPlaybackIdx} />
+<AudioPlayback {songs} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
 	<div
