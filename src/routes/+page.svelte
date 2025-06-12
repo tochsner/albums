@@ -46,8 +46,6 @@
 			accent: '#2f3542'
 		}
 	};
-
-	let hoveredGenre = $state<string | null>(null);
 </script>
 
 <div
@@ -73,7 +71,6 @@
 			{:then loadedAlbums}
 				{#each loadedAlbums as album, index (album.albumId)}
 					{@const colors = genreColors[album.genre as keyof typeof genreColors]}
-					{@const isHovered = hoveredGenre === album.genre}
 
 					<div class="group relative w-full">
 						<!-- Background glow effect -->
@@ -85,8 +82,6 @@
 						<a
 							class="relative block w-full transform transition-all duration-300 hover:-translate-y-1 hover:scale-105"
 							href={`/${album.mood}/${album.albumId}`}
-							onmouseenter={() => (hoveredGenre = album.genre)}
-							onmouseleave={() => (hoveredGenre = null)}
 						>
 							<div
 								class="relative overflow-hidden rounded-2xl border border-white/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl"

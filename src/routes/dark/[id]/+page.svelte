@@ -28,8 +28,11 @@
 <AudioPlayback {songs} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
-	<div class="flex w-full flex-col items-center justify-center" style:background={mainBackground}>
-		<div class="relative flex aspect-square w-full items-center justify-center sm:px-[25%]">
+	<div
+		class="flex w-full flex-col items-center justify-center sm:px-[25%]"
+		style:background={mainBackground}
+	>
+		<div class="relative flex aspect-square w-full items-center justify-center">
 			<svg
 				width="100%"
 				height="393"
@@ -248,3 +251,66 @@
 		</svg>
 	</div>
 {/snippet}
+
+<style>
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	@keyframes float-delayed {
+		0%,
+		100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-8px);
+		}
+	}
+
+	@keyframes bounce-slow {
+		0%,
+		100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-4px);
+		}
+	}
+
+	@keyframes scalePulse {
+		0%,
+		100% {
+			transform: scale(1.1);
+		}
+		50% {
+			transform: scale(1.15);
+		}
+	}
+
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.animate-float-delayed {
+		animation: float-delayed 8s ease-in-out infinite;
+		animation-delay: 1s;
+	}
+
+	.animate-bounce-slow {
+		animation: bounce-slow 2s ease-in-out infinite;
+	}
+
+	.animate-scalePulse {
+		animation: scalePulse 2s ease-in-out infinite;
+	}
+
+	.hover\:scale-102:hover {
+		transform: scale(1.02);
+	}
+</style>
