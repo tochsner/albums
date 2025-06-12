@@ -57,6 +57,9 @@
 		<!-- Main title with creative layout -->
 		<div class="relative z-10 mb-16 text-center">
 			<h1 class="font-Bebas text-5xl text-orange-700 md:text-6xl">Album of the Day</h1>
+			<p class="font-Baloo mt-6 text-xl leading-relaxed text-gray-800">
+				Discover the greatest albums of this century, one album at a time.
+			</p>
 		</div>
 
 		<!-- Genre buttons with enhanced design -->
