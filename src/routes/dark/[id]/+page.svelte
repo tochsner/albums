@@ -4,6 +4,7 @@
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
+	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs } = data;
@@ -97,6 +98,8 @@
 		<div class="font-Bebas z-40 mb-12 text-[1.7rem] text-white">
 			{artist}
 		</div>
+
+		<Share album={title} {artist} light />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

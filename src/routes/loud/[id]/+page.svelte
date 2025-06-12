@@ -5,6 +5,7 @@
 	import Sized from '$lib/components/sized.svelte';
 	import { shrinkWrap } from '$lib/fitUtils';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
+	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs } = data;
@@ -78,6 +79,8 @@
 		<div class="font-Anton text-[1.7rem]" style:color={mainForeground}>
 			{artist}
 		</div>
+
+		<Share album={title} {artist} />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

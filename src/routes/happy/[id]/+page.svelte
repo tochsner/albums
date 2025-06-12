@@ -4,6 +4,7 @@
 	import type { PageProps } from './$types';
 	import Sized from '$lib/components/sized.svelte';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
+	import Share from '$lib/components/share.svelte';
 	import { shrinkWrap } from '$lib/fitUtils';
 
 	let { data }: PageProps = $props();
@@ -103,6 +104,8 @@
 		<div class="font-Baloo text-[1.7rem] font-semibold text-white">
 			{artist}
 		</div>
+
+		<Share album={title} {artist} light />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
