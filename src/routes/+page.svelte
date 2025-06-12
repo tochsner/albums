@@ -53,7 +53,7 @@
 	data-sveltekit-preload-data="hover"
 >
 	<!-- Hero Section -->
-	<div class="relative flex h-screen w-full flex-col items-center justify-center">
+	<div class="relative mt-16 flex w-full flex-col items-center">
 		<!-- Main title with creative layout -->
 		<div class="relative z-10 mb-16 text-center">
 			<h1 class="font-Bebas text-5xl text-orange-700 md:text-6xl">Album of the Day</h1>
@@ -150,7 +150,7 @@
 
 	<!-- How It Works Section -->
 	<div class="relative px-6 py-20">
-		<div class="mx-auto max-w-4xl text-center">
+		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="font-Bebas mb-8 text-4xl text-orange-700">How It Works</h2>
 			<p class="font-Baloo text-lg leading-relaxed text-gray-800">
 				Every day, we select an album for each genre from Rolling Stone's
@@ -168,5 +168,9 @@
 	</div>
 
 	<!-- Footer decoration -->
-	<div class="h-20 bg-gradient-to-t from-orange-100/50 to-transparent"></div>
+	<div class="h-20 bg-gradient-to-t from-orange-100/50 to-transparent text-center">
+		<a href="/impressum" class="text-orange-600 underline transition-colors hover:text-orange-700"
+			>Impressum</a
+		>
+	</div>
 </div>
