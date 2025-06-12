@@ -10,11 +10,11 @@
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, spotifyId } = data;
 
-	let titleFontSize = title.length < 30 ? '2.8rem' : '2.0rem';
+	let titleFontSize = title.length < 30 ? '3.4rem' : '2.2rem';
 
 	let palette = CorePalette.contentOf(color);
 	let mainBackground = `linear-gradient(45deg,${chex(palette.a3, 70, 40)} 0%,${chex(palette.a1, 70, 50)} 100%)`;
-	let mainForeground = chex(palette.a1, 60, 70);
+	let mainForeground = chex(palette.a2, 60, 50);
 
 	let songBackground = `linear-gradient(45deg, ${chex(palette.a2, 75, 40)} 0%,${chex(palette.a1, 90, 40)} 100%)`;
 
@@ -36,22 +36,13 @@
 		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[25%]"
 		style:background={mainBackground}
 	>
-		<div class="relative mt-19 flex items-center justify-center">
-			<svg
-				viewBox="0 0 297 184"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				class="absolute top-0 left-0 h-full w-full"
-				preserveAspectRatio="none slice"
-			>
-				<path
-					d="M15.1571 135.777C19.0264 157.846 37.6481 174.302 60.0247 175.427L228.985 183.925C270.302 186.003 302.705 148.927 295.113 108.261L284.132 49.4436C280.054 27.6006 261.517 11.4119 239.324 10.3116L51.0367 0.976547C20.2792 -0.54837 -3.93729 26.8746 1.38105 57.2072L15.1571 135.777Z"
-					fill="white"
-				/>
-			</svg>
+		<div class="relative mx-5 mt-19 flex items-center justify-center">
+			<div
+				class="absolute top-0 right-0 bottom-0 left-0 -rotate-5 skew-3 rounded-tl-[3rem] rounded-tr-[3rem] rounded-br-[4rem] rounded-bl-[3rem] bg-white"
+			></div>
 
 			<div
-				class="font-Baloo z-20 mx-12 my-6 h-full text-center leading-[115%] font-semibold text-balance overflow-ellipsis text-white"
+				class="font-Fredoka z-20 m-8 h-full text-center leading-[110%] font-semibold text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 				use:shrinkWrap
@@ -103,7 +94,7 @@
 			/>
 		</svg>
 
-		<div class="font-Baloo text-[1.7rem] font-semibold text-white">
+		<div class="font-Fredoka text-[1.7rem] font-semibold text-white">
 			{artist}
 		</div>
 
@@ -143,12 +134,7 @@
 			{idx + 1}.
 		</span>
 
-		<Sized
-			font="'Baloo Bhaijaan 2'"
-			fontWeight="600"
-			classes="text-center text-white"
-			text={song.title}
-		/>
+		<Sized font="Fredoka" fontWeight="600" classes="text-center text-white" text={song.title} />
 
 		<button
 			onclick={() => {
@@ -213,7 +199,7 @@
 
 		{#if song.themes.length > 0}
 			<span
-				class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+				class="font-Fredoka mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
 			>
 				Themes
 			</span>
@@ -221,7 +207,7 @@
 			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 				{#each song.themes as theme (theme)}
 					<span
-						class="font-Baloo rounded-full bg-white/90 px-4 pt-1 text-[1.2rem] font-semibold text-white"
+						class="font-Fredoka rounded-full bg-white/90 px-4 py-1 text-[1.2rem] font-semibold text-white"
 						style:color={mainForeground}
 					>
 						{theme}
@@ -231,13 +217,13 @@
 		{/if}
 
 		{#if song.description != ''}
-			<span class="itlic font-Baloo mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
+			<span class="itlic font-Fredoka mx-4 my-4 text-center text-[1.2rem] font-semibold text-white">
 				{song.description}
 			</span>{/if}
 
 		{#if song.highlightedLyrics.length > 0}
 			<span
-				class="font-Baloo mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
+				class="font-Fredoka mx-4 mt-12 self-start text-[1.7rem] font-semibold text-white italic opacity-80"
 			>
 				Lyrics
 			</span>
@@ -246,7 +232,7 @@
 		<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 			{#each song.highlightedLyrics as lyrics, idx (idx)}
 				<span
-					class="font-Baloo rounded-full bg-white/20 pt-1 pr-4 pl-7 -indent-4 text-[1.2rem] font-semibold text-white italic"
+					class="font-Fredoka rounded-full bg-white/20 py-1 pr-4 pl-7 -indent-4 text-[1.2rem] font-semibold text-white italic"
 				>
 					{lyrics}
 				</span>
@@ -268,7 +254,7 @@
 {/snippet}
 
 {#snippet footer()}
-	<div class="font-Baloo m-4 text-center text-gray-600">
+	<div class="font-Fredoka m-4 text-center text-gray-600">
 		Made using the
 
 		<a class="underline" href="http://www.deezer.com/developers/simpleapi">Deezer API</a>, the
