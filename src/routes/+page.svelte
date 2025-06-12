@@ -50,6 +50,7 @@
 
 <div
 	class="min-h-dvh w-full overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-red-50"
+	data-sveltekit-preload-data="hover"
 >
 	<!-- Hero Section -->
 	<div class="relative flex h-screen w-full flex-col items-center justify-center">
@@ -82,6 +83,7 @@
 						<a
 							class="relative block w-full transform transition-all duration-300 hover:-translate-y-1 hover:scale-105"
 							href={`/${album.mood}/${album.albumId}`}
+							prel
 						>
 							<div
 								class="relative overflow-hidden rounded-2xl border border-white/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl"

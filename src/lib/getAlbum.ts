@@ -16,13 +16,7 @@ export async function getAlbum(id: string) {
 		.eq('artist', album.artist)
 		.order('track');
 
-	const audios = (async () =>
-		await supabase
-			.from('Song')
-			.select('audio')
-			.eq('albumTitle', album.title)
-			.eq('artist', album.artist)
-			.order('track'))();
+	const audios = new Promise(() => []); // todo: implement if the refreshing of audio links is not reliable
 
 	return {
 		...album,
