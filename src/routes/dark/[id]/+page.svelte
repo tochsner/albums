@@ -26,6 +26,8 @@
 	{@render songOverview(idx, song)}
 {/each}
 
+{@render footer()}
+
 <AudioPlayback {songs} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
@@ -255,65 +257,14 @@
 	</div>
 {/snippet}
 
-<style>
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-10px);
-		}
-	}
+{#snippet footer()}
+	<div class="font-Baloo m-4 text-center text-gray-600">
+		Made using the
 
-	@keyframes float-delayed {
-		0%,
-		100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-8px);
-		}
-	}
-
-	@keyframes bounce-slow {
-		0%,
-		100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-4px);
-		}
-	}
-
-	@keyframes scalePulse {
-		0%,
-		100% {
-			transform: scale(1.1);
-		}
-		50% {
-			transform: scale(1.15);
-		}
-	}
-
-	.animate-float {
-		animation: float 6s ease-in-out infinite;
-	}
-
-	.animate-float-delayed {
-		animation: float-delayed 8s ease-in-out infinite;
-		animation-delay: 1s;
-	}
-
-	.animate-bounce-slow {
-		animation: bounce-slow 2s ease-in-out infinite;
-	}
-
-	.animate-scalePulse {
-		animation: scalePulse 2s ease-in-out infinite;
-	}
-
-	.hover\:scale-102:hover {
-		transform: scale(1.02);
-	}
-</style>
+		<a class="underline" href="http://www.deezer.com/developers/simpleapi">Deezer API</a>, the
+		<a class="underline" href="https://docs.genius.com/#/getting-started-h1">Genius API</a>, the
+		<a class="underline" href="https://developer.spotify.com/documentation/web-api/">Spotify API</a
+		>, and the
+		<a class="underline" href="https://openai.com/api/">OpenAI API</a>.
+	</div>
+{/snippet}

@@ -27,6 +27,8 @@
 	{@render songOverview(idx, song)}
 {/each}
 
+{@render footer()}
+
 <AudioPlayback {songs} {currentPlaybackIdx} />
 
 {#snippet albumOverview()}
@@ -258,8 +260,21 @@
 			stroke-width="2.5"
 			stroke="currentColor"
 			class="mt-12 mb-4 size-6 text-white opacity-70"
+			class:invisible={idx === songs.length - 1}
 		>
 			<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 		</svg>
+	</div>
+{/snippet}
+
+{#snippet footer()}
+	<div class="font-Baloo m-4 text-center text-gray-600">
+		Made using the
+
+		<a class="underline" href="http://www.deezer.com/developers/simpleapi">Deezer API</a>, the
+		<a class="underline" href="https://docs.genius.com/#/getting-started-h1">Genius API</a>, the
+		<a class="underline" href="https://developer.spotify.com/documentation/web-api/">Spotify API</a
+		>, and the
+		<a class="underline" href="https://openai.com/api/">OpenAI API</a>.
 	</div>
 {/snippet}
