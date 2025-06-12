@@ -1,4 +1,3 @@
-import albums from '$lib/data/albums.json';
 import log from 'loglevel';
 
 import type { RequestEvent } from './$types';
@@ -10,9 +9,16 @@ export async function GET({ params }: RequestEvent) {
 	while (true) {
 		log.info('Choose random album of the day for genre:', genre);
 
-		const genreAlbums = albums.filter((a) => a.genre === genre);
+		const genreAlbums = (await supabase.from('Album').select('id, title, mood').eq('genre', genre))
+			.data;
+
+		if (!genreAlbums || genreAlbums.length === 0) {
+			log.error('No albums found for genre:', genre);
+			continue;
+		}
+
 		const randomAlbum = genreAlbums[Math.floor(Math.random() * genreAlbums.length)];
-		log.info(`Selected album: ${randomAlbum.album}.`);
+		log.info(`Selected album: ${randomAlbum.title}.`);
 
 		const now = new Date();
 		const todayMorningUTC = new Date(
@@ -34,7 +40,7 @@ export async function GET({ params }: RequestEvent) {
 			mood: randomAlbum.mood
 		});
 
-		log.info('Inserted album of the day:', randomAlbum.album);
+		log.info('Inserted album of the day:', randomAlbum.title);
 
 		return new Response();
 	}
