@@ -7,7 +7,7 @@
 	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs, spotifyId } = data;
+	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable } = data;
 
 	let titleFontSize = title.length < 30 ? '3.0rem' : '2.0rem';
 
@@ -31,7 +31,7 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[25%]"
+		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div
@@ -118,7 +118,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30 sm:px-[25%]"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30 sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/50">
@@ -138,7 +138,8 @@
 			aria-label="Start playback."
 			class:scale-110={isPlaying}
 			class:animate-scalePulse={isPlaying}
-			class="origin-center transition-transform duration-100 ease-in"
+			class:hidden={!isPlaybackReliable}
+			class="origin-center cursor-pointer transition-transform duration-100 ease-in"
 		>
 			<svg viewBox="0 0 248 253" fill="none" xmlns="http://www.w3.org/2000/svg" class="mt-16 w-24">
 				<defs>

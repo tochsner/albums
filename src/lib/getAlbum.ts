@@ -1,13 +1,21 @@
 import { supabase } from './supabaseClient';
 
 export async function getAlbum(id: string) {
-	const { data } = await supabase.from('Album').select('*').eq('id', id).limit(1);
+	const { data } = await supabase
+		.from('Album')
+		.select('*, AlbumOfTheDay!AlbumOfTheDay_albumId_fkey ( date )')
+		.eq('id', id)
+		.limit(1);
 
 	if (!data || data.length === 0) {
 		throw new Error('No albums found');
 	}
 
 	const album = data[0];
+
+	// if this is not an album of the day
+	// the playback won't be available
+	const isPlaybackReliable = album.AlbumOfTheDay.length > 0;
 
 	const songs = await supabase
 		.from('Song')
@@ -21,6 +29,7 @@ export async function getAlbum(id: string) {
 	return {
 		...album,
 		songs: songs.data,
-		audios
+		audios,
+		isPlaybackReliable
 	};
 }

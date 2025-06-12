@@ -7,7 +7,7 @@
 	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs, spotifyId } = data;
+	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable } = data;
 
 	let titleFontSize = title.length < 24 ? '4.0rem' : '3.0em';
 
@@ -32,13 +32,13 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center sm:px-[25%]"
+		class="flex w-full flex-col items-center justify-center sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div class="relative flex aspect-square w-full items-center justify-center">
 			<svg
 				width="100%"
-				height="393"
+				height="100%"
 				viewBox="0 0 393 393"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
 			viewBox="0 0 24 24"
 			stroke-width="2.5"
 			stroke="currentColor"
-			class="mb-4 size-6 animate-bounce text-white opacity-70"
+			class="mt-8 mb-4 size-6 animate-bounce text-white opacity-70"
 		>
 			<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 		</svg>
@@ -130,7 +130,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[25%]"
+		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white/50">
@@ -155,7 +155,8 @@
 			aria-label="Start playback."
 			class:scale-110={isPlaying}
 			class:animate-scalePulse={isPlaying}
-			class="origin-center transition-transform duration-100 ease-in"
+			class:hidden={!isPlaybackReliable}
+			class="origin-center cursor-pointer transition-transform duration-100 ease-in"
 		>
 			<svg
 				viewBox="0 0 307 307"
