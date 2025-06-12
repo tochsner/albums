@@ -5,6 +5,7 @@ import { retrieveGeniusData } from '$lib/processing/retrieveGeniusData';
 import { supabase } from '$lib/supabaseClient';
 
 import log from 'loglevel';
+import { retrieveSpotifyData } from './retrieveSpotifyData';
 
 export async function processAlbum(
 	name: string,
@@ -19,6 +20,8 @@ export async function processAlbum(
 	const deezerData = await retrieveDeezerData(name, artist, retrieveAudio);
 	log.info('Retrieved Deezer data.');
 
+	const spotifyData = await retrieveSpotifyData(name, artist);
+
 	const color = await getColorFromUrl(deezerData.imageUrl);
 	log.info('Retrieved main color.');
 
@@ -30,7 +33,8 @@ export async function processAlbum(
 		imageUrl: deezerData.imageUrl,
 		color,
 		mood,
-		genre
+		genre,
+		spotifyData: spotifyData.spotifyId
 	});
 	log.info('Stored album into DB.');
 

@@ -1,5 +1,6 @@
 import albums from '$lib/data/albums.json';
 import { processAlbum } from '$lib/processing/processAlbum';
+import { retrieveSpotifyData } from '$lib/processing/retrieveSpotifyData';
 import { supabase } from '$lib/supabaseClient';
 import log from 'loglevel';
 

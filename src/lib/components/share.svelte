@@ -1,27 +1,39 @@
 <script lang="ts">
-	let { album, artist, light }: { album: string; artist: string; light?: boolean } = $props();
-	import { page } from '$app/stores';
-	import { createWebSocketModuleRunnerTransport } from 'vite/module-runner';
+	let {
+		album,
+		artist,
+		spotifyId,
+		light
+	}: { album: string; artist: string; spotifyId?: string; light?: boolean } = $props();
+	import { page } from '$app/state';
 </script>
 
 <div class="flex gap-4">
-	<a class="m-4" href="https://open.spotify.com/search/${encodeURIComponent(`${artist} ${album}`)}">
-		<img
-			src={light ? '/images/spotify.png' : '/images/spotify_dark.png'}
-			alt="Spotify Logo"
-			class="h-8 w-8"
-		/>
-	</a>
+	{#if spotifyId}
+		<a
+			class="m-4"
+			href="https://open.spotify.com/album/{spotifyId}"
+			aria-label="Open on Spotify"
+			target="_blank"
+		>
+			<img
+				src={light ? '/images/spotify.png' : '/images/spotify_dark.png'}
+				alt="Spotify Logo"
+				class="h-8 w-8"
+			/>
+		</a>
+	{/if}
 
 	<button
 		class="m-4"
 		onclick={async () => {
 			await navigator.share({
-				title: `Check out ${album} by ${artist}`,
-				url: $page.url.pathname
+				title: 'Album of the Day',
+				text: `Check out ${album} by ${artist}`,
+				url: page.url.pathname
 			});
 		}}
-		aria-label="Share on Spotify"
+		aria-label="Share website"
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

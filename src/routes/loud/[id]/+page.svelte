@@ -8,7 +8,7 @@
 	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs } = data;
+	let { title, artist, imageUrl, color, songs, spotifyId } = data;
 
 	let titleFontSize = title.length < 30 ? '4.0rem' : '3rem';
 
@@ -80,7 +80,7 @@
 			{artist}
 		</div>
 
-		<Share album={title} {artist} />
+		<Share album={title} {artist} {spotifyId} />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
