@@ -25,7 +25,7 @@
 	{/if}
 
 	<button
-		class="m-4"
+		class="m-4 cursor-pointer"
 		onclick={async () => {
 			await navigator.share({
 				title: 'Album of the Day',
