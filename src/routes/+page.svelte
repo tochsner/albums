@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { likedAlbums } from '$lib/stores/likedAlbums.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -46,6 +47,8 @@
 			accent: '#2f3542'
 		}
 	};
+
+	const liked = likedAlbums();
 </script>
 
 <div
@@ -147,6 +150,43 @@
 			>
 				<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 			</svg>
+		</div>
+	</div>
+
+	<!-- Liked Albums Section -->
+	<div class="relative px-6 py-20">
+		<div class="mx-auto max-w-2xl text-center">
+			<h2 class="font-Bebas mb-8 text-4xl text-orange-700">Your Liked Albums</h2>
+			{#if liked.likedAlbums?.length}
+				<div class="space-y-4">
+					{#each liked.likedAlbums as album (album.id)}
+						<div
+							class="group flex items-center justify-between gap-4 rounded-lg bg-white/50 px-4 shadow-sm transition-all hover:bg-white/70"
+						>
+							<div class="flex flex-1 items-center gap-4">
+								<div class="text-left">
+									<h3 class="font-Baloo text-lg font-semibold text-gray-900">{album.title}</h3>
+									<p class="font-Baloo text-sm text-gray-600">{album.artist}</p>
+								</div>
+							</div>
+							<div class="ml-auto">
+								<a
+									class="m-4"
+									href="https://open.spotify.com/album/{album.spotifyId}"
+									aria-label="Open on Spotify"
+									target="_blank"
+								>
+									<img src="/images/spotify_dark.png" alt="Spotify Logo" class="h-8 w-8" />
+								</a>
+							</div>
+						</div>
+					{/each}
+				</div>
+			{:else}
+				<p class="font-Baloo text-lg text-gray-600">
+					No liked albums yet. Start exploring to add some!
+				</p>
+			{/if}
 		</div>
 	</div>
 

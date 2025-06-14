@@ -1,14 +1,26 @@
 <script lang="ts">
 	let {
-		album,
+		id,
+		title,
+		imageUrl,
 		artist,
 		spotifyId,
 		light
-	}: { album: string; artist: string; spotifyId?: string; light?: boolean } = $props();
+	}: {
+		id: number;
+		title: string;
+		imageUrl: string;
+		artist: string;
+		spotifyId?: string;
+		light?: boolean;
+	} = $props();
 	import { page } from '$app/state';
+	import LikeAlbum from './likeAlbum.svelte';
 </script>
 
-<div class="flex gap-4">
+<div class="flex items-center gap-4">
+	<LikeAlbum {title} {artist} {imageUrl} {id} {spotifyId} {light} />
+
 	{#if spotifyId}
 		<a
 			class="m-4"
@@ -29,7 +41,7 @@
 		onclick={async () => {
 			await navigator.share({
 				title: 'Album of the Day',
-				text: `Check out ${album} by ${artist}`,
+				text: `Check out ${title} by ${artist}`,
 				url: page.url.pathname
 			});
 		}}
@@ -41,7 +53,7 @@
 			viewBox="0 0 24 24"
 			stroke-width="2"
 			stroke="currentColor"
-			class="size-6"
+			class="size-8"
 			style:color={light ? '#fff' : '#000'}
 		>
 			<path

@@ -8,7 +8,7 @@
 	import { shrinkWrap } from '$lib/fitUtils';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable } = data;
+	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable, id } = data;
 
 	let titleFontSize = title.length < 30 ? '3.4rem' : '2.2rem';
 
@@ -98,7 +98,7 @@
 			{artist}
 		</div>
 
-		<Share album={title} {artist} {spotifyId} light />
+		<Share {title} {id} {imageUrl} {artist} {spotifyId} light />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -255,6 +255,10 @@
 {/snippet}
 
 {#snippet footer()}
+	<div class="my-4 flex justify-center">
+		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
+	</div>
+
 	<div class="font-Fredoka m-4 text-center text-gray-600">
 		Made using the
 

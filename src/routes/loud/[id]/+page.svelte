@@ -8,7 +8,7 @@
 	import Share from '$lib/components/share.svelte';
 
 	let { data }: PageProps = $props();
-	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable } = data;
+	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable, id } = data;
 
 	let titleFontSize = title.length < 30 ? '4.0rem' : '3rem';
 
@@ -241,6 +241,10 @@
 {/snippet}
 
 {#snippet footer()}
+	<div class="my-4 flex justify-center">
+		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
+	</div>
+
 	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the
 

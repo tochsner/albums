@@ -19,7 +19,7 @@ export async function getAlbum(id: string) {
 
 	const songs = await supabase
 		.from('Song')
-		.select('title, description, themes, highlightedLyrics, previewUrl')
+		.select('id, title, description, themes, highlightedLyrics, previewUrl')
 		.eq('albumTitle', album.title)
 		.eq('artist', album.artist)
 		.order('track');
