@@ -32,7 +32,7 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div class="relative flex aspect-square w-full items-center justify-center">
@@ -48,7 +48,7 @@
 			</svg>
 
 			<div
-				class="font-Bebas z-40 mx-4 my-6 max-w-3/4 text-center leading-[115%] text-balance text-white"
+				class="font-Bebas z-40 mx-4 my-6 max-w-3/4 overflow-hidden text-center leading-[115%] text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 			>
@@ -130,7 +130,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip overflow-x-clip border-t-2 border-white sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2.2rem] text-white/50">

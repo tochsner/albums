@@ -32,11 +32,11 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center gap-12 overflow-clip sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div
-			class="font-EBGaramond mx-8 mt-16 rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance opacity-0"
+			class="font-EBGaramond mx-8 mt-16 max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -124,7 +124,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip overflow-x-clip border-t-2 border-white/30 sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/70">

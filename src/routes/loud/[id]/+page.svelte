@@ -33,16 +33,16 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center gap-12 overflow-clip sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Anton mx-10 mt-16 rounded-full bg-white p-10 text-center leading-[115%] text-balance opacity-0"
+			class="font-Anton mx-10 mt-16 max-w-full overflow-hidden rounded-full bg-white p-10 text-center leading-[115%] text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
 		>
-			{title}
+			{title}dsafjköjfdsaljfksdajffsdj
 		</div>
 
 		<svg viewBox="0 0 248 253" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3/4">
@@ -111,7 +111,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip overflow-x-clip border-t-2 border-white sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Anton py-6 text-center text-[2.3rem] text-white/60">

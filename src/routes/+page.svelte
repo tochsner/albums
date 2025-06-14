@@ -86,7 +86,6 @@
 						<a
 							class="relative block w-full transform transition-all duration-300 hover:-translate-y-1 hover:scale-105"
 							href={`/${album.mood}/${album.albumId}`}
-							prel
 						>
 							<div
 								class="relative overflow-hidden rounded-2xl border border-white/20 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl"

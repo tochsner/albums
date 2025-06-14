@@ -33,16 +33,16 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center gap-12 overflow-clip sm:px-[30%]"
 		style:background={mainBackground}
 	>
-		<div class="relative mx-5 mt-19 flex items-center justify-center">
+		<div class="relative mx-5 mt-19 flex max-w-full items-center justify-center">
 			<div
 				class="absolute top-0 right-0 bottom-0 left-0 -rotate-5 skew-3 rounded-tl-[3rem] rounded-tr-[3rem] rounded-br-[4rem] rounded-bl-[3rem] bg-white"
 			></div>
 
 			<div
-				class="font-Fredoka z-20 m-8 h-full text-center leading-[110%] font-semibold text-balance overflow-ellipsis text-white"
+				class="font-Fredoka overflow z-20 m-8 h-full max-w-full overflow-hidden text-center leading-[110%] font-semibold text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 				use:shrinkWrap
@@ -127,7 +127,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip overflow-x-clip border-t-2 border-white sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Bebas py-6 text-center text-[2rem] text-white/60">

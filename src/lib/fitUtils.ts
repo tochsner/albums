@@ -60,6 +60,7 @@ export function shrinkWrap(element: HTMLElement) {
 	range.setEndAfter(lastChild);
 
 	const { width } = range.getBoundingClientRect();
+
 	element.style.width = width + 'px';
 	element.style.boxSizing = 'content-box';
 	element.style.opacity = '100';

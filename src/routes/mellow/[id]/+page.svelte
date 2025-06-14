@@ -31,11 +31,11 @@
 
 {#snippet albumOverview()}
 	<div
-		class="flex w-full flex-col items-center justify-center gap-12 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center gap-12 overflow-clip sm:px-[30%]"
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Aboreto mx-4 mt-19 text-center leading-[115%] text-balance text-white"
+			class="font-Aboreto mx-4 mt-19 max-w-full overflow-hidden text-center leading-[115%] text-balance overflow-ellipsis text-white"
 			style:font-size={titleFontSize}
 		>
 			{title}
@@ -118,7 +118,7 @@
 	{@const isPlaying = currentPlaybackIdx == idx}
 
 	<div
-		class="flex w-full flex-col items-center justify-center overflow-x-clip border-t-2 border-white/30 sm:px-[30%]"
+		class="flex w-full flex-col items-center justify-center overflow-clip overflow-x-clip border-t-2 border-white/30 sm:px-[30%]"
 		style:background={songBackground}
 	>
 		<span class="font-Aboreto py-6 text-center text-[1.8rem] text-white/50">
