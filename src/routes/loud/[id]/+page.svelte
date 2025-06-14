@@ -42,7 +42,7 @@
 			style:font-size={titleFontSize}
 			use:shrinkWrap
 		>
-			{title}dsafjköjfdsaljfksdajffsdj
+			{title}
 		</div>
 
 		<svg viewBox="0 0 248 253" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-3/4">
