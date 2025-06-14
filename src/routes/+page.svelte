@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { likedAlbums } from '$lib/stores/likedAlbums.svelte';
-	import { fade, slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -52,17 +52,29 @@
 	const liked = likedAlbums();
 </script>
 
+<svelte:head>
+	<title>Six Albums</title>
+	<meta
+		name="description"
+		content="Discover the greatest albums of this century, six albums at a time."
+	/>
+</svelte:head>
+
 <div
-	class="min-h-dvh w-full overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-red-50"
+	class="min-h-dvh w-full overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 bg-fixed"
 	data-sveltekit-preload-data="hover"
 >
 	<!-- Hero Section -->
 	<div class="relative mt-16 flex w-full flex-col items-center">
 		<!-- Main title with creative layout -->
 		<div class="relative z-10 mb-16 text-center">
-			<h1 class="font-Bebas text-5xl text-orange-700 md:text-6xl">Album of the Day</h1>
-			<p class="font-Baloo mt-6 text-xl leading-relaxed text-gray-800">
-				Discover the greatest albums of this century, one album at a time.
+			<h1
+				class="font-Bebas flex items-center justify-center gap-2 text-5xl text-orange-700 md:text-6xl"
+			>
+				Six Albums
+			</h1>
+			<p class="font-Baloo mt-6 text-2xl leading-relaxed text-gray-800">
+				Discover the greatest albums of this century, six albums at a time.
 			</p>
 		</div>
 
@@ -166,8 +178,10 @@
 							transition:slide
 						>
 							<div class="flex flex-1 items-center gap-4">
-								<div class="text-left">
-									<h3 class="font-Baloo text-lg font-semibold text-gray-900">{album.title}</h3>
+								<div class="my-4 text-left">
+									<h3 class="font-Baloo text-lg leading-[110%] font-semibold text-gray-900">
+										{album.title}
+									</h3>
 									<p class="font-Baloo text-sm text-gray-600">{album.artist}</p>
 								</div>
 							</div>

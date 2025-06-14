@@ -19,6 +19,11 @@
 	let currentPlaybackIdx = $state<number>();
 </script>
 
+<svelte:head>
+	<title>{title} by {artist}</title>
+	<meta name="description" content="Discover the album {title} by {artist}." />
+</svelte:head>
+
 {@render albumOverview()}
 
 {#each songs as song, idx (song.title)}
