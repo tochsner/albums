@@ -10,7 +10,7 @@
 		maxNumLines = 3,
 		minFontSizePx = 40.0,
 		maxFontSizePx = 100.0,
-		gapPx = -1
+		gapPx = 1
 	}: {
 		text: string;
 		font: string;
