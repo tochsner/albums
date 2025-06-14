@@ -5,9 +5,9 @@ import log from 'loglevel';
 export async function GET() {
 	log.info('Refresh playback URLs for all album of the last two days.');
 
-	const yesterday = new Date();
-	yesterday.setDate(yesterday.getDate() - 1);
-	const isoDateYesterday = yesterday.toISOString().split('T')[0];
+	const today = new Date();
+	today.setDate(today.getDate());
+	const isoDateYesterday = today.toISOString().split('T')[0];
 
 	const recentAotD = (
 		await supabase.from('AlbumOfTheDay').select('albumId').gte('date', isoDateYesterday)
@@ -31,10 +31,31 @@ export async function GET() {
 
 		await Promise.all(
 			songs.map(async (song) => {
-				const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
-				await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
+				try {
+					const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
+					await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
+					log.info(`Refreshed for song ${song.id} ${previewUrl}`);
+				} catch {
+					log.error(
+						`Failed to refresh playback URL for song ${song.id}. We wait and try again later`
+					);
+
+					const randomWaitTime = Math.floor(Math.random() * 5000) + 1000;
+					await new Promise((resolve) => setTimeout(resolve, randomWaitTime));
+
+					try {
+						const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
+						await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
+						log.info(`Refreshed for song ${song.id} ${previewUrl}`);
+					} catch {
+						log.error(`Failed to refresh playback URL for song ${song.id}. We give up.`);
+					}
+				}
 			})
 		);
+
+		// we wait for a second before refreshing the next album
+		await new Promise((resolve) => setTimeout(resolve, 1000));
 	}
 
 	log.info('Playback URLs refreshed.');

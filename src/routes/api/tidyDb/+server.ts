@@ -17,7 +17,7 @@ export async function GET() {
 	);
 	const yesterdayMorningUTCIso = yesterdayMorningUTC.toISOString();
 
-	await supabase.from('Album').delete().lt('created_at', yesterdayMorningUTCIso);
+	await supabase.from('AlbumOfTheDay').delete().lt('created_at', yesterdayMorningUTCIso);
 
 	return new Response();
 }

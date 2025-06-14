@@ -73,6 +73,10 @@ export async function retrieveDeezerSongData(
 
 	if (!song) throw new Error('Song not found');
 
+	if (!song.preview) {
+		throw new Error('Song preview not found');
+	}
+
 	return {
 		deezerId: song.id,
 		title: song.title_short,
