@@ -48,6 +48,17 @@ export class LikedAlbums {
 		}
 	}
 
+	toggleLikeAlbum(album: LikedAlbum) {
+		const currentAlbums = this.likedAlbums ?? [];
+		const index = currentAlbums.findIndex((a) => a.id === album.id);
+
+		if (index === -1) {
+			this.likedAlbums = [...currentAlbums, album];
+		} else {
+			this.likedAlbums = [...currentAlbums.slice(0, index), ...currentAlbums.slice(index + 1)];
+		}
+	}
+
 	isLiked() {
 		const currentAlbums = this.likedAlbums ?? [];
 		return currentAlbums.some((a) => a.id === this.album?.id);
