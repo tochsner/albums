@@ -20,19 +20,24 @@ export async function GET() {
 	).data;
 
 	for (const album of recentAlbums ?? []) {
-		const songs = (
-			await supabase
-				.from('Song')
-				.select('id, deezerId')
-				.eq('albumTitle', album.title)
-				.eq('artist', album.artist)
-		).data;
+		const songs =
+			(
+				await supabase
+					.from('Song')
+					.select('id, deezerId')
+					.eq('albumTitle', album.title)
+					.eq('artist', album.artist)
+			).data ?? [];
 
-		for (const song of songs ?? []) {
-			const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
-			await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
-		}
+		await Promise.all(
+			songs.map(async (song) => {
+				const { previewUrl } = await retrieveDeezerSongData(song.deezerId);
+				await supabase.from('Song').update({ previewUrl }).eq('id', song.id);
+			})
+		);
 	}
+
+	log.info('Playback URLs refreshed.');
 
 	return new Response();
 }
