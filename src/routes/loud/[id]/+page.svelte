@@ -87,7 +87,7 @@
 			{artist}
 		</div>
 
-		<Share album={title} {artist} {spotifyId} />
+		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
 
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

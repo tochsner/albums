@@ -39,6 +39,7 @@
 		const baselineFont = `${fontWeight} ${minFontSizePx}px ${font}`;
 
 		document.fonts.load(baselineFont).then(() => {
+			if (!browser || width === undefined) return;
 			console.log('Loaded');
 
 			const words = text.split(' ') || [];
