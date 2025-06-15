@@ -47,7 +47,7 @@
 			></div>
 
 			<div
-				class="font-Fredoka overflow z-20 m-8 h-full max-w-full overflow-hidden text-center leading-[110%] font-semibold text-balance overflow-ellipsis text-white"
+				class="font-Fredoka overflow z-20 m-8 h-full w-7xl max-w-full overflow-hidden text-center leading-[110%] font-semibold text-balance overflow-ellipsis text-white"
 				style:font-size={titleFontSize}
 				style:color={mainForeground}
 				use:shrinkWrap

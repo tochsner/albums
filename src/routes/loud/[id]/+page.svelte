@@ -42,7 +42,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Anton mx-10 mt-16 max-w-full overflow-hidden rounded-full bg-white p-10 text-center leading-[115%] text-balance overflow-ellipsis opacity-0"
+			class="font-Anton mx-10 mt-16 w-7xl max-w-full overflow-hidden rounded-full bg-white p-10 text-center leading-[115%] text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap

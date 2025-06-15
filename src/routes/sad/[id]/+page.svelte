@@ -41,7 +41,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-EBGaramond mx-8 mt-16 max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance overflow-ellipsis opacity-0"
+			class="font-EBGaramond mx-8 mt-16 w-7xl max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
