@@ -24,7 +24,7 @@ export async function getAlbum(id: string) {
 		.eq('artist', album.artist)
 		.order('track');
 
-	const audios = new Promise(() => []); // todo: implement if the refreshing of audio links is not reliable
+	const audios = [] as never[]; // todo: implement if the refreshing of audio links is not reliable
 
 	return {
 		...album,
