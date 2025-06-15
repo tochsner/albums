@@ -73,7 +73,7 @@
 			>
 				Six Albums
 			</h1>
-			<p class="font-Baloo mt-6 text-2xl leading-relaxed text-gray-800">
+			<p class="font-Baloo mt-6 text-2xl text-gray-800">
 				Discover the greatest albums of this century, six albums at a time.
 			</p>
 		</div>
