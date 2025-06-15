@@ -41,7 +41,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-EBGaramond mx-8 mt-16 w-7xl max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-extrabold text-balance overflow-ellipsis opacity-0"
+			class="font-EBGaramond mx-8 mt-16 w-7xl max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-bold text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -97,7 +97,7 @@
 			/>
 		</svg>
 
-		<div class="font-EBGaramond text-[1.7rem] font-extrabold text-white">
+		<div class="font-EBGaramond text-[1.7rem] font-bold text-white">
 			{artist}
 		</div>
 
@@ -209,7 +209,7 @@
 
 		{#if song.themes.length > 0}
 			<span
-				class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
+				class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-bold text-white italic opacity-80"
 			>
 				Themes
 			</span>
@@ -217,7 +217,7 @@
 			<div class="mt-4 flex w-full flex-wrap justify-center gap-4 px-4">
 				{#each song.themes as theme (theme)}
 					<span
-						class="font-EBGaramond rounded-lg border-2 border-white px-4 py-1 text-[1.2rem] font-extrabold text-white
+						class="font-EBGaramond rounded-lg border-2 border-white px-4 py-1 text-[1.2rem] font-bold text-white
 
 "
 						style:background={songBackground}
@@ -229,16 +229,14 @@
 		{/if}
 
 		{#if song.description != ''}
-			<span
-				class="itlic font-EBGaramond mx-4 my-4 text-center text-[1.2rem] font-extrabold text-white"
-			>
+			<span class="itlic font-EBGaramond mx-4 my-4 text-center text-[1.2rem] font-bold text-white">
 				{song.description}
 			</span>
 		{/if}
 
 		{#if song.highlightedLyrics.length > 0}
 			<span
-				class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-extrabold text-white italic opacity-80"
+				class="font-EBGaramond mx-4 mt-12 self-start text-[1.7rem] font-bold text-white italic opacity-80"
 			>
 				Lyrics
 			</span>
@@ -246,7 +244,7 @@
 			<div class="mx-6 mt-4 flex -rotate-2 flex-col items-center gap-2">
 				{#each song.highlightedLyrics as lyrics, idx (idx)}
 					<span
-						class="font-EBGaramond bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] font-extrabold text-white italic"
+						class="font-EBGaramond bg-red-50 py-1 pr-2 pl-6 -indent-4 text-[1.2rem] font-bold text-white italic"
 						style:background={mainForeground}
 					>
 						{lyrics}
