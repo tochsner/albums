@@ -242,6 +242,21 @@
 			</p>
 		</div>
 	</div>
+	<!-- Feedback Section -->
+	<div class="relative px-6 py-20">
+		<div class="mx-auto max-w-2xl text-center">
+			<h2 class="font-Bebas mb-8 text-4xl text-orange-700">Feedback</h2>
+			<p class="font-Baloo text-lg leading-relaxed text-gray-800">
+				We'd love to hear your thoughts!
+				<a
+					class="font-medium text-orange-600 underline transition-colors hover:text-orange-700"
+					href="mailto:tobia.ochsner@hotmail.com?subject=Feedback Six Albums"
+				>
+					Send us your feedback.
+				</a>
+			</p>
+		</div>
+	</div>
 
 	<!-- Footer decoration -->
 	<div class="h-20 bg-gradient-to-t from-orange-100/50 to-transparent text-center">
