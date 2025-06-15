@@ -52,16 +52,20 @@ export function getPartitions(arr: number[], n: number) {
 }
 
 export function shrinkWrap(element: HTMLElement) {
-	const { firstChild, lastChild } = element;
-	if (!element || !firstChild || !lastChild) return;
+	const font = window.getComputedStyle(element, null).getPropertyValue('font');
 
-	const range = document.createRange();
-	range.setStartBefore(firstChild);
-	range.setEndAfter(lastChild);
+	document.fonts.load(font).then(() => {
+		const { firstChild, lastChild } = element;
+		if (!element || !firstChild || !lastChild) return;
 
-	const { width } = range.getBoundingClientRect();
+		const range = document.createRange();
+		range.setStartBefore(firstChild);
+		range.setEndAfter(lastChild);
 
-	element.style.width = width + 'px';
-	element.style.boxSizing = 'content-box';
-	element.style.opacity = '100';
+		const { width } = range.getBoundingClientRect();
+
+		element.style.width = width + 'px';
+		element.style.boxSizing = 'content-box';
+		element.style.opacity = '100';
+	});
 }
