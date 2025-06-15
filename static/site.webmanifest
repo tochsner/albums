@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Six Albums",
+  "short_name": "Six Albums",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
