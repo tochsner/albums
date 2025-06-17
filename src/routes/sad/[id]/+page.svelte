@@ -6,6 +6,7 @@
 	import { shrinkWrap } from '$lib/fitUtils';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 	import Share from '$lib/components/share.svelte';
+	import Home from '$lib/components/home.svelte';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable, id } = data;
@@ -25,6 +26,8 @@
 	<meta name="description" content="Discover the album {title} by {artist}." />
 </svelte:head>
 
+<Home {color} />
+
 {@render albumOverview()}
 
 {#each songs as song, idx (song.title)}
@@ -41,7 +44,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-EBGaramond mx-8 mt-16 w-7xl max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-bold text-balance overflow-ellipsis opacity-0"
+			class="font-EBGaramond mx-8 mt-22 w-7xl max-w-full overflow-hidden rounded-lg bg-white px-4 py-3 text-center leading-[115%] font-bold text-balance overflow-ellipsis opacity-0"
 			style:color={mainForeground}
 			style:font-size={titleFontSize}
 			use:shrinkWrap
@@ -268,9 +271,17 @@
 {/snippet}
 
 {#snippet footer()}
-	<div class="my-4 flex justify-center">
+	<div class="flex justify-center py-4" style:background={chex(palette.a1, 96, 40)}>
 		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
 	</div>
+
+	<a
+		href="/"
+		aria-label="home"
+		class="font-Baloo m-6 block text-center text-xl text-orange-700 underline"
+	>
+		Discover all six albums for today
+	</a>
 
 	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the

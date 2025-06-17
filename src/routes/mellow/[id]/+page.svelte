@@ -5,6 +5,7 @@
 	import Sized from '$lib/components/sized.svelte';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 	import Share from '$lib/components/share.svelte';
+	import Home from '$lib/components/home.svelte';
 
 	let { data }: PageProps = $props();
 	let { title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable, id } = data;
@@ -24,6 +25,8 @@
 	<meta name="description" content="Discover the album {title} by {artist}." />
 </svelte:head>
 
+<Home {color} />
+
 {@render albumOverview()}
 
 {#each songs as song, idx (song.title)}
@@ -40,7 +43,7 @@
 		style:background={mainBackground}
 	>
 		<div
-			class="font-Aboreto mx-4 mt-19 max-w-full overflow-hidden text-center leading-[115%] text-balance overflow-ellipsis text-white"
+			class="font-Aboreto mx-4 mt-22 max-w-full overflow-hidden text-center leading-[115%] text-balance overflow-ellipsis text-white"
 			style:font-size={titleFontSize}
 		>
 			{title}
@@ -261,9 +264,25 @@
 {/snippet}
 
 {#snippet footer()}
-	<div class="my-4 flex justify-center">
+	<div class="flex justify-center py-4" style:background={chex(palette.a1, 96, 40)}>
 		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
 	</div>
+
+	<a
+		href="/"
+		aria-label="home"
+		class="font-Baloo m-6 block text-center text-xl text-orange-700 underline"
+	>
+		Discover all six albums for today
+	</a>
+
+	<a
+		href="/"
+		aria-label="home"
+		class="font-Baloo m-6 block text-center text-xl text-orange-700 underline"
+	>
+		Discover all six albums for today
+	</a>
 
 	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the

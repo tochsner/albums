@@ -20,6 +20,8 @@
 	let currentPlaybackIdx = $state<number>();
 </script>
 
+<Home {color} />
+
 {@render albumOverview()}
 
 {#each songs as song, idx (song.title)}
@@ -260,9 +262,17 @@
 {/snippet}
 
 {#snippet footer()}
-	<div class="my-4 flex justify-center">
+	<div class="flex justify-center py-4" style:background={chex(palette.a1, 96, 40)}>
 		<Share {title} {artist} {spotifyId} {id} {imageUrl} />
 	</div>
+
+	<a
+		href="/"
+		aria-label="home"
+		class="font-Baloo m-6 block text-center text-xl text-orange-700 underline"
+	>
+		Discover all six albums for today
+	</a>
 
 	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the
