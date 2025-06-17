@@ -5,6 +5,7 @@
 	import Sized from '$lib/components/sized.svelte';
 	import AudioPlayback from '$lib/components/audioPlayback.svelte';
 	import Share from '$lib/components/share.svelte';
+	import Home from '$lib/components/home.svelte';
 
 	let { data }: PageProps = $props();
 	let { id, title, artist, imageUrl, color, songs, spotifyId, isPlaybackReliable } = data;

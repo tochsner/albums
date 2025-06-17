@@ -276,14 +276,6 @@
 		Discover all six albums for today
 	</a>
 
-	<a
-		href="/"
-		aria-label="home"
-		class="font-Baloo m-6 block text-center text-xl text-orange-700 underline"
-	>
-		Discover all six albums for today
-	</a>
-
 	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the
 

@@ -275,7 +275,7 @@
 		Discover all six albums for today
 	</a>
 
-	<div class="font-Fredoka m-4 text-center text-gray-600">
+	<div class="font-Baloo m-4 text-center text-gray-600">
 		Made using the
 
 		<a class="underline" href="http://www.deezer.com/developers/simpleapi">Deezer API</a>, the
